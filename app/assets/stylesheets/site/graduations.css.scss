@@ -1,0 +1,30 @@
+#graduation-raiox {
+  
+  .nav-tabs {
+    border-bottom: 0px !important;
+  }
+  
+  .tab-content {
+    padding-top: 0px !important;
+  }
+
+  .about-graduation {
+    margin: 20px;
+  }
+
+  div.div-special > div[class*="col-"] {
+   padding: 0; 
+  }
+
+  .filter-institution {
+    padding: 10px;
+    border-bottom: 1px solid #dddddd;
+    background: rgba(250, 250, 250, 0.5);
+  }
+
+  .ies-graduation-area {
+    margin-left: 20px;
+    margin-right: 20px;
+  }
+
+}

@@ -1,0 +1,20 @@
+<aside>
+  <div id="sidebar" class="nav-collapse">
+    <!-- sidebar menu start-->            
+    <div class="leftside-navigation">
+      <ul class="sidebar-menu" id="nav-accordion">
+        <%= nav_link 'Dashboard', '/', 'employees/dashboard', 'fa fa-dashboard' %>
+
+        <%= nav_link 'Clientes', employees_customers_path, 'employees/customers', 'fa fa-smile-o' %>
+        <%= nav_link 'Graduações', employees_graduation_groups_path, 'employees/graduations', 'fa fa-book' %>
+        <%= nav_link 'Instituições', employees_institutions_path, 'employees/institutions', 'fa fa-building-o' %>
+        <%= nav_link 'Escolas', employees_schools_path, 'employees/schools', 'fa fa-home' %>
+        <%= nav_link 'Usuários', employees_users_path, 'employees/users', 'fa fa-users' %>
+        <%= nav_link 'Relatório Geral', employees_reports_path, 'employees/reports', 'fa fa-bar-chart-o' %>
+
+      </ul>
+    </div>        
+    <!-- sidebar menu end-->
+  </div>
+</aside>
+<!--sidebar end-->

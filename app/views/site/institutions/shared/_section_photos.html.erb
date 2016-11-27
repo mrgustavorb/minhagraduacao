@@ -1,0 +1,20 @@
+<div class="title-section">
+  <div class="row">
+    <div class="col-lg-12">
+      <h2>Fotos</h2>
+    </div>
+  </div>
+</div>
+
+<div class="row">
+   <% @institution.institution_photos.each do |institution_photo| %>
+    <div class="col-md-3">
+      <div class="thumb">
+        <a class="gallery-item filter1 fancybox" href="<%= institution_photo.photo.url(:large) %>" rel="gallery1">
+          <img src="<%= institution_photo.photo.url(:thumb) %>" class='video-thumb img-responsive'/>
+          <div class="btn-video-play"></div>
+        </a>
+      </div>
+    </div>
+  <% end %>
+</div>

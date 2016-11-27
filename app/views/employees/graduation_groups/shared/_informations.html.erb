@@ -1,0 +1,27 @@
+<div class="form-group">        
+  <%= f.label :name, 'Nome', class: 'control-label col-md-2' %>
+  <div class="col-md-10">
+    <%= f.input :name, label: false, input_html: { class: 'form-control' } %>
+  </div>    
+</div> 
+
+<div class="form-group">        
+  <%= f.label :description, 'Sobre', class: 'control-label col-md-2' %>
+  <div class="col-md-10">
+    <%= f.input :description, label: false, input_html: { class: 'form-control', :rows => 10 } %>
+  </div>     
+</div> 
+
+<div class="form-group">        
+  <%= f.label :source, 'Fonte', class: 'control-label col-md-2' %>
+  <div class="col-md-10">
+    <%= f.input :source, label: false, input_html: { class: 'form-control' } %>
+  </div>     
+</div> 
+
+<div class="form-group">
+  <label class="control-label col-md-2"></label>
+  <div class="col-md-7">
+    <%= f.button :submit, 'Salvar', class: 'btn btn-primary' %>
+  </div>
+</div>

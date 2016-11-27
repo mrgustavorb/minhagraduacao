@@ -1,0 +1,19 @@
+<%= form_for resource, as: resource_name, url: update_customer_confirmation_path, :html => {:method => 'patch', :class => 'form-signin'}, :id => 'activation-form' do |f| %>
+<h2 class="form-signin-heading"><%= image_tag 'backend/logo-md-white.png' %></h2>
+  <div class="login-wrap">
+    <div class="user-login-info">
+      <%= devise_error_messages! %>
+
+      <% if @requires_password %>
+        <%= f.password_field :password, placeholder: "Digite uma nova senha.", class: "form-control placeholder-no-fix text-center" %></p>
+        <%= f.password_field :password_confirmation, placeholder: "Confirme sua senha.", class: "form-control placeholder-no-fix text-center" %></p>
+      <% end %> 
+      <%= hidden_field_tag :confirmation_token,@confirmation_token %>
+    </div>
+    <button class="btn btn-lg btn-login btn-block" type="submit">Confirmar meu acesso</button>
+
+    <div class="registration">
+      minhagraduacao.com © 2014
+    </div>
+  </div>
+<% end %>

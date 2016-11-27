@@ -1,0 +1,25 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or vendor/assets/stylesheets of plugins, if any, can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the top of the
+ * compiled file, but it's generally better to create a new file per style scope.
+ *
+ *= require_self
+ *= require font-awesome
+ *= require backend/bootstrap/bootstrap
+ *= require backend/bootstrap-reset
+ *= require backend/style
+ *= require backend/style-responsive
+ *= require backend/bucket-ico-fonts/bucket-ico-fonts
+ *= require backend/bootstrap-datepicker/datepicker
+ *= require backend/bootstrap-timepicker/bootstrap-timepicker
+ *= require backend/iCheck/skins/minimal/minimal
+ *= require backend/animate/animate.min
+ *= require backend/bootstrap-fileupload/bootstrap-fileupload
+ *= require site/fancybox/jquery.fancybox
+ *= require site/settings
+ */

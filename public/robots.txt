@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+ 
+Sitemap: https://s3-us-west-2.amazonaws.com/ninjachoice/sitemap.xml.gz

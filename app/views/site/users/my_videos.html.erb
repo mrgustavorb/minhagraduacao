@@ -1,0 +1,22 @@
+<%- @page_title = 'Meus Vídeos' -%>
+<div>
+  <% @videos.each do |video| %>
+    <div class="media">
+      <a class="pull-left btn-video" href="<%= url_for controller: "graduations", action: "videos", url_friendly: video.graduation_group.url_friendly, v: video.id %>" data-id="<%= video.id %>">
+        <img class="media-object" src="<%= video.get_storage(@is_mobile)[:thumb] %>" alt="" />
+      </a>
+      <div class="media-body">
+        <h4 class="media-heading"><%= video.graduation.graduation_group.name %></h4>
+        
+        <%= video.opinion_type.name %><br/>
+        <%= l video.created_at, format: :short %><br/>
+        <%= video.views.to_i %> visualizações<br/>
+
+        <a href="javascript:void(0)" class="video-del" data-id="<%= video.id %>">
+          <span class="glyphicon glyphicon-trash"></span>
+        </a>
+      </div>
+    </div>
+  <% end %>
+</div>
+<div class="modal fade" id="player-modal"></div>

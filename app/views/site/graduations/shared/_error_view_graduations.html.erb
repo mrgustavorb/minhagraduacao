@@ -1,0 +1,31 @@
+<!-- Don't remove this code, it's important -->
+<div id="list_graduations">
+  <div class="container">
+    <div class="row spacer-row">
+      <div class="col-md-12">
+
+          <div class="row">
+            
+            <% @graduations.each_slice((@graduations.count()/3.0).ceil) do |graduations| %>
+              <div class="col-md-4">
+                <ul class="list-group">
+                  <% graduations.each do |graduation| %>
+                    <li class="list-group-item">
+                      <span class="label label-primary pull-right">
+                        <%= link_to graduation_institutions_path(graduation.url_friendly), class: "graduation-list" do %>
+                          <%= graduation.institutions_numbers %> instituições
+                        <% end %>
+                      </span>
+                      <%= link_to graduation.name, graduation_about_path(graduation.url_friendly) %>
+                    </li>
+                  <% end %>
+                </ul>
+              </div>
+            <% end %>
+         
+          </div>
+
+      </div>
+    </div>
+  </div>
+</div>

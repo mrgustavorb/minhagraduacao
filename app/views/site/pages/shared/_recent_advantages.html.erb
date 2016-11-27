@@ -1,0 +1,22 @@
+<div class="quote-two">
+  <!-- Quote Two Content -->
+  <div class="quote-two">
+    <!-- Container -->
+    <div class="container">
+      <!-- Quote Two Content -->
+      <div class="quote-two-content">
+        <span>&#8220;</span>
+        <div class="owl-carousel" data-items="1" data-auto-play="true" data-pagination="true" data-single-item="true">
+          <!-- Item -->
+          <% @evaluations_graduations.each do |evaluation| %>
+            <div class="item">    
+              <h3><%= evaluation.advantage %></h3>
+              <h4><%= evaluation.graduation_group.name if evaluation.graduation_group %></h4> <!-- aqui vai o cargo ou graduação -->
+              <h5><%= evaluation.user.user_profile.scholarity == 2 ? "Universitário" : "Profissional"%> </h5>
+            </div>
+          <% end %>   
+        </div>
+      </div>
+    </div>          
+  </div>
+</div> 

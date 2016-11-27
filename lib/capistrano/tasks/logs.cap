@@ -1,0 +1,9 @@
+app_name = "ninjachoice"
+namespace :logs do
+  desc "tail rails logs" 
+  task :tail do
+    on roles(:app) do
+      execute "tail -f #{shared_path}/log/unicorn-#{app_name}.log"
+    end
+  end
+end

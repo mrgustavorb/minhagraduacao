@@ -1,0 +1,23 @@
+pt-BR:
+  activerecord:
+    models:
+      user: "Usuário"
+      user_profile: "Perfil"
+    attributes:
+      user:
+        email: "E-mail"
+        password: "Senha"
+        password_confirmation: "Confirmação de senha"
+        confirmation_token: "Código de ativação"
+      user_profile:
+        name: "Nome"
+        birthday: "Data de Nascimento"
+        gender: "Gênero"
+  mail_form:
+    models:
+      contact_form: "Contato"
+    attributes:
+      contact_form:
+        name: "Nome"
+        email: "E-mail"
+        message: "Mensagem"

@@ -1,0 +1,121 @@
+<div class="title-section">
+  <div class="row">
+    <div class="col-lg-12">
+      <h2><%= @graduation.name %></h2>
+    </div>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-lg-12">
+    
+    <% unless @graduation_profile.nil? %>
+
+      <% unless @graduation_profile[:graduation][:profile][:description].empty? %> 
+        <div>
+            <%= @graduation_profile[:graduation][:profile][:description] %>
+        </div>
+      <% end %>
+
+      <hr />
+
+      <div class="row">
+        
+        <% unless @graduation_profile[:graduation][:profile][:description].empty? %> 
+          <div class="col-lg-4">
+            <blockquote>
+              <p>Período</p>
+              <footer><%= @graduation_profile[:graduation][:profile][:period] %></footer>
+            </blockquote>
+          </div>
+        <% end %>
+        
+        <% unless @graduation_profile[:graduation][:profile][:hours].empty? %> 
+          <div class="col-lg-4">
+            <blockquote>
+              <p>Carga Horaria</p>
+              <footer><%= @graduation_profile[:graduation][:profile][:hours] %>H</footer>
+            </blockquote>
+          </div>
+        <% end %>
+        
+        <% unless @graduation_profile[:graduation][:profile][:monthly_payment].empty? %> 
+          <div class="col-lg-4">
+            <blockquote>
+              <p>Mensalidade</p>
+              <footer>R$ <%= @graduation_profile[:graduation][:profile][:monthly_payment] %></footer>
+            </blockquote>
+          </div>
+        <% end %>  
+        
+        <% unless @graduation_profile[:graduation][:profile][:coordination].empty? %> 
+          <div class="col-lg-4">
+            <blockquote>
+              <p>Coordenação</p>
+              <footer><%= @graduation_profile[:graduation][:profile][:coordination] %></footer>
+            </blockquote>
+          </div>
+        <% end %>
+      
+        <% unless @graduation_profile[:graduation][:profile][:academic_degree] %> 
+          <div class="col-lg-4">
+            <blockquote>
+              <p>Grau Academico</p>
+              <footer><%= @graduation_profile[:graduation][:academic_degree] %></footer>
+            </blockquote>
+          </div>
+        <% end %>  
+        
+        <% unless @graduation_profile[:graduation][:profile][:method_teaching] %> 
+          <div class="col-lg-4">
+            <blockquote>
+              <p>Modalidade de Ensino</p>
+              <footer><%= @graduation_profile[:graduation][:method_teaching] %></footer>
+            </blockquote>
+          </div>
+        <% end %>
+
+      </div>
+
+      <% unless @graduation_profile[:graduation][:profile][:video_link].empty? %> 
+        <hr />
+        
+        <div class="row">
+          <div class="col-md-12">
+            <%= youtube_embed(@graduation_profile[:graduation][:profile][:video_link]) %>
+          </div>
+        </div>
+      <% end %>
+
+      <% if (@graduation_profile[:graduation][:profile][:total_semesters] > 0) %>
+
+        <hr />
+
+        <div class="row">
+          <% @graduation_profile[:graduation][:profile][:total_semesters].times do |semester| %>
+
+            <div class="col-md-4 box-semester">
+              <div class="panel panel-primary">
+                <div class="panel-heading">
+                    <h3 class="panel-title"><%= semester+1 %>˚ Semestre</h3>
+                </div>
+                <ul class="list-group">
+                  <% @graduation_profile[:graduation][:profile][:large_semester].times do |discipline| %>
+                    <li class="list-group-item">
+                      <% unless @graduation_profile[:graduation][:profile][:disciplines][semester][discipline].nil? %>
+                        <%= @graduation_profile[:graduation][:profile][:disciplines][semester][discipline].name %> 
+                      <% else %>
+                        &nbsp;
+                      <% end %>
+                    </li>
+                  <% end %>
+                </ul>
+              </div>
+            </div>
+          <% end %>
+        </div>
+      <% end %>
+    <% end %>
+    
+  </div>
+</div>

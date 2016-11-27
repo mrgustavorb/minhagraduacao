@@ -1,0 +1,40 @@
+<div class="login-reg">
+  <div class="login-reg-form">
+    
+    <%= form_for(resource, :as => resource_name, :url => password_path(resource_name), html: { id: 'form-toggle-2', class: 'form-toggle form-horizontal', role: 'form' }) do |f|  %>
+      <%= link_to image_tag("LogoTopoLogin.png", class: "center-block img-responsive"), root_path %>
+      <%= devise_error_messages! %>
+    
+      <br />
+      
+      <h4>Editar Senha</h4>
+
+      <br />
+
+        <%= f.hidden_field :reset_password_token %>
+
+        <div class="form-group">
+          <div class="col-xs-12">
+            <%= f.password_field :password, :autofocus => true, :class => 'form-control input-lg', placeholder: 'Nova senha' %>
+          </div>  
+        </div>
+
+        <div class="form-group">
+          <div class="col-xs-12">
+            <!-- Input -->
+            <%= f.password_field :password_confirmation, :class => 'form-control input-lg', placeholder: 'Confirmar nova senha' %>
+          </div>
+        </div>
+
+         <br />
+
+        <div class="form-group">
+          <div class="col-xs-12">
+            <!-- Button -->
+            <button type="submit" class="btn btn-primary btn-lg btn-block btn-green">Alterar Minha Senha</button>&nbsp;
+          </div>
+        </div> 
+
+    <% end %>
+  </div>
+</div>  

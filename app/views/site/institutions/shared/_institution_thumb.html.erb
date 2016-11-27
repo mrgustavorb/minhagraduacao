@@ -1,0 +1,31 @@
+<div class="client-two">
+  <div class="row">
+
+    <%- @institutions.each do |institution| -%>   
+
+        <div class="col-md-3 col-sm-6 item">
+          <!-- Client Two Item -->
+          <div class="c2-item">
+            <a href="#">
+              <!-- Image -->
+              <% unless institution.profile.avatar_updated_at.nil? %>
+                <%= link_to institution_show_path(institution.url_friendly, @graduation_group.url_friendly, institution.id) do %>
+                  <img class="img-responsive is-customer" src="<%= institution.profile.avatar_url %>" alt="<%=institution.name%>">
+                <% end %>
+              <% else %>
+                <%= link_to institution_show_path(institution.url_friendly, @graduation_group.url_friendly, institution.id) do %>
+                  <img class="img-responsive no-customer" src="<%= image_url('university_school.png') %>" alt="<%= institution.name %>">
+                <% end %>
+                <h5><%= link_to institution.sigla, institution_show_path(institution.url_friendly, @graduation_group.url_friendly, institution.id) %></h5>
+              <% end %>
+            </a>
+          </div>
+          <%= link_to institution_show_path(institution.url_friendly, @graduation_group.url_friendly, institution.id) do %>
+            <button type="button" class="btn btn-primary btn-lg btn-block">Quero Conhecer</button>
+          <% end %>
+        </div>  
+
+    <% end %>
+
+  </div>
+</div>

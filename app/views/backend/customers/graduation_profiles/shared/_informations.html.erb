@@ -1,0 +1,52 @@
+<%= simple_form_for([:customers, @graduation_profile], :url => { :action => "update" }, multipart: true, :html => {:class => "form-horizontal"}) do |f| %>
+  
+  <div class="form-group">        
+    <%= f.label :description, 'Descrição', class: 'control-label col-md-2' %>
+    <div class="col-md-10">
+      <%= f.input :description, label: false, input_html: { class: 'form-control' } %>
+    </div>    
+  </div> 
+
+  <div class="form-group">        
+    <%= f.label :period, 'Período', class: 'control-label col-md-2' %>
+    <div class="col-md-3">
+      <%= f.input :period, label: false, input_html: { class: 'form-control' } %>
+    </div>    
+  </div>    
+
+  <div class="form-group">        
+    <%= f.label :hours, 'Carga Horária', class: 'control-label col-md-2' %>
+    <div class="col-md-3">
+      <%= f.input :hours, label: false, input_html: { class: 'form-control' } %>
+    </div>    
+  </div> 
+
+  <div class="form-group">        
+    <%= f.label :monthly_payment, 'Mensalidade', class: 'control-label col-md-2' %>
+    <div class="col-md-3">
+      <%= f.input :monthly_payment, label: false, input_html: { class: 'form-control' } %>
+    </div>    
+  </div>     
+
+  <div class="form-group">        
+    <%= f.label :coordination, 'Coordenação', class: 'control-label col-md-2' %>
+    <div class="col-md-7">
+      <%= f.input :coordination, label: false, input_html: { class: 'form-control' } %>
+    </div>    
+  </div>  
+  
+  <div class="form-group">        
+    <%= f.label :video_link, 'Link Video', class: 'control-label col-md-2' %>
+    <div class="col-md-7">
+      <%= f.input :video_link, label: false, input_html: { class: 'form-control' } %>
+    </div>    
+  </div>   
+
+  <div class="form-group">
+    <label class="control-label col-md-2"></label>
+    <div class="col-md-10">
+      <%= f.button :submit, 'Salvar', class: 'btn btn-primary' %>
+    </div>
+  </div>
+
+<%- end -%>

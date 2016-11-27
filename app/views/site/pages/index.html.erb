@@ -1,0 +1,33 @@
+<!-- Outer layer -->
+<div id="bs-carousel-1" class="carousel slide" data-ride="carousel" data-interval="5000" data-pause="hover" data-wrap="true">
+  <!-- Slides. You can also add captions -->
+  <!-- Item, First item should have extra class "active" -->
+  <div class="carousel-inner" style='top:-130px;'>
+    <div class="item active img-responsive"><img src="/assets/banner1.png" width="2850" height="1200"></div>
+    <div class="item img-responsive"><img src="/assets/banner2.png" width="2850" height="1200"></div>
+  </div>
+</div>  
+<!-- End Outer layer -->      
+
+<div class="container">  
+  
+  <div style="margin: -35px;"></div>
+
+  <!-- How it works? --> 
+  <%= render 'site/pages/shared/how_it_works' %>
+  <!-- End How it works? --> 
+  
+  <!-- Recent Opinions -->
+  <%= render 'site/pages/shared/recent_opinions' %>
+  <!-- End Recent Opinions -->
+
+</div>
+
+  <!-- Some positive advantages -->
+  <%= render 'site/pages/shared/recent_advantages'%>
+  <!-- End Some positive advantages -->
+
+  <!-- Counters -->
+  <%= render 'site/pages/shared/counter' %>
+  <!-- End Counters -->
+

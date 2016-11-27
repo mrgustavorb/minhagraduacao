@@ -1,0 +1,25 @@
+<div class="row">
+  <div style="margin: 20px;"></div>
+  
+  <span class="text-center">
+    <h2>Média Geral<br /></h2><h5><%= @evaluations_avarege[:total] > 1 ? "#{@evaluations_avarege[:total]} Avaliações" : "#{@evaluations_avarege[:total]} Avaliação" %></h5>
+  </span>
+
+  <hr />
+
+  <div style="margin: 40px;"></div>
+
+  <%= render 'site/graduations/evaluations/general_average' %>
+
+  <div style="margin: 40px;"></div>
+
+  <hr />
+
+  <span class="text-center">
+    <h2>Leia as avaliações individuais</h2>
+  </span>
+
+  <hr />
+  
+  <%= render 'site/graduations/evaluations/individual_average' %>
+</div>  

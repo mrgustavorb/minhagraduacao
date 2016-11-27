@@ -1,0 +1,12 @@
+<%- @title_box_login = 'Reenviar instruções de ativação' -%>
+
+<%= form_for(resource, :as => resource_name, :url => unlock_path(resource_name), :html => { :method => :post }) do |f| %>
+  
+  <%= devise_error_messages! %>
+
+  <div>
+    <%= f.email_field :email, :autofocus => true, :class => 'form-control input-lg', placeholder: 'E-mail' %>
+    <br /
+    <button type="submit" class="btn btn-primary btn-lg btn-block btn-large-purple">Reenviar ativação</button>
+  </div>
+<% end %>

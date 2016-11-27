@@ -1,0 +1,58 @@
+<%- @page_internal_title = @graduation_group.name -%>
+
+<% title "Graduação " + @page_internal_title %>
+<% keywords @graduation_group.keywords_graduations %>
+
+<div id="graduation-raiox">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">       
+
+        <div class="nav-tabs-one">
+          <ul class="nav nav-tabs pull-left">
+            <%- unless @graduation_group.description.blank? then -%>
+              <li class="<%= action_name == 'about' ? 'active' : '' %>">
+                <%= link_to graduation_about_path(@graduation_group.url_friendly) do %>
+                   <i class="fa fa-info-circle"></i><span> Sobre</span>
+                <%- end %>
+              </li>
+            <%- end -%>
+            <li class="<%= (action_name == 'evaluations' || (action_name == 'about' && @graduation_group.description.blank?)) ? 'active' : '' %>">
+              <%= link_to graduation_evaluations_path(@graduation_group.url_friendly) do %>
+                <i class="fa fa-comments-o"></i><span> Avalições</span>
+              <%- end %>
+            </li>
+            <li class="<%= action_name == 'institutions' ? 'active' : '' %>">
+              <%= link_to graduation_institutions_path(@graduation_group.url_friendly) do %>
+                <i class="fa fa-graduation-cap"></i><span> Onde estudar?</span>
+              <%- end %>
+            </li>
+          </ul> 
+        </div>
+        
+        <div class="div-special">
+          <div class="col-md-12 panel panel-grey ">    
+            <div class="tab-content padded">
+              <div class="tab-pane active">
+                
+                <%- if action_name == 'about' && !@graduation_group.description.blank? %>
+                  <%= render 'site/graduations/shared/about' %>
+                <%- end %>
+
+                <%- if action_name == 'evaluations' || (action_name == 'about' && @graduation_group.description.blank?) %>
+                  <%= render 'site/graduations/evaluations/show' %>
+                <%- end %>
+
+                <%- if action_name == 'institutions' %>
+                  <%= render 'site/graduations/shared/institutions' %>
+                <%- end %>
+
+              </div>
+            </div>
+          </div>  
+        </div>  
+
+      </div>
+    </div>
+  </div>
+</div>

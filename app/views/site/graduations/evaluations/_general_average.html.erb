@@ -1,0 +1,87 @@
+<div class="row divider-2">
+  <div class="col-lg-4 col-md-5 col-sm-6 col-xs-12">
+      <div class="row divider-4">
+        <div class="col-lg-9 col-md-10 col-sm-10 col-xs-10">Facilidade do curso:</div>
+        <span class="badge badge-orange col-md-3"><strong>Nota: <%= (@evaluations_avarege[:graduation_difficulty]/@evaluations_avarege[:total]) %></strong></span>
+      </div>
+
+      <div class="row divider-4">
+        <div class="col-lg-9 col-md-10 col-sm-11 col-xs-11">Reconhecimento pela sociedade:</div>
+        <span class="badge badge-orange col-md-3"><strong>Nota: <%= (@evaluations_avarege[:social_recognition]/@evaluations_avarege[:total]) %></strong></span>
+      </div>
+
+      <div class="row divider-4">
+        <div class="col-lg-9 col-md-10 col-sm-11 col-xs-11">Possibilidade de atuar em várias áreas:</div>
+        <span class="badge badge-orange col-md-3"><strong>Nota: <%= (@evaluations_avarege[:job_most_areas]/@evaluations_avarege[:total]) %></strong></span>
+      </div>
+
+      <div class="row divider-4">
+        <div class="col-lg-9 col-md-10 col-sm-11 col-xs-11">Oportunidade de concurso público:</div>
+        <span class="badge badge-orange col-md-3"><strong>Nota: <%= (@evaluations_avarege[:tendering]/@evaluations_avarege[:total]) %></strong></span>
+      </div>
+
+      <div class="row visible-sm visible-xs divider-4">
+        <div class="col-sm-11 col-xs-11">Estágios renumerados:</div>
+        <span class="badge badge-orange col-md-3"><strong>Nota: <%= (@evaluations_avarege[:renumbered_training]/@evaluations_avarege[:total]) %></strong></span>
+      </div>
+
+      <div class="row visible-sm visible-xs divider-4">
+        <div class="col-sm-11 col-xs-11">Conseguir o primeiro emprego:</div>
+        <span class="badge badge-orange col-md-3"><strong>Nota: <%= (@evaluations_avarege[:first_job]/@evaluations_avarege[:total]) %></strong></span>
+      </div>
+
+      <div class="row visible-sm visible-xs divider-4">
+        <div class="col-sm-11 col-xs-11">Nível dos profissionais:</div>
+        <span class="badge badge-orange col-md-3"><strong>Nota: <%= (@evaluations_avarege[:graduation_professional]/@evaluations_avarege[:total_professional]) if @evaluations_avarege[:total_professional] > 0 %></strong></span>
+      </div>
+  </div>  
+
+
+  <div class="col-lg-4 col-md-4 col-sm-6 hidden-sm hidden-xs">
+    <div class="row  divider-4">
+      <div class="col-lg-9 col-md-10 col-sm-9">Estágios renumerados:</div>
+      <span class="badge badge-orange col-md-3"><strong>Nota: <%= (@evaluations_avarege[:renumbered_training]/@evaluations_avarege[:total]) %></strong></span>
+    </div>
+
+    <div class="row divider-4">
+      <div class="col-lg-9 col-md-10 col-sm-9">Conseguir o primeiro emprego:</div>
+      <span class="badge badge-orange col-md-3"><strong>Nota: <%= (@evaluations_avarege[:first_job]/@evaluations_avarege[:total]) %></strong></span>
+    </div>
+
+    <div class="row divider-4">
+      <div class="col-lg-9 col-md-10 col-sm-9">Nível dos profissionais:</div>
+      <span class="badge badge-orange col-md-3"><strong>Nota: <%= (@evaluations_avarege[:graduation_professional]/@evaluations_avarege[:total_professional]) if @evaluations_avarege[:total_professional] > 0 %></strong></span></div>
+    </div>
+  </div> 
+
+  <% if (signed_in? && current_user.answered) %>
+
+    <%  
+      starting_salary     = @evaluations_avarege[:starting_salary].to_i > 0 ? (@evaluations_avarege[:starting_salary]/@evaluations_avarege[:total_professional]).to_i : 0
+      professional_salary = @evaluations_avarege[:professional_salary].to_i > 0 ? (@evaluations_avarege[:professional_salary]/@evaluations_avarege[:total_professional]).to_i : 0
+      starting_salary     = what_salary?(starting_salary)
+      professional_salary = what_salary?(professional_salary, true)
+    %> 
+
+    <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12">
+      <% if (signed_in? && current_user.answered && evaluation.user.user_profile.scholarity == 3) %>
+          <div class="row">
+            <div class="col-lg-7 col-md-11 col-sm-6 col-xs-6"> Salário Inicial:</div>
+            <div class="col-xs-11 hidden-xs"><strong><%= starting_salary %></strong></div>
+            <div class="col-xs-11 visible-xs"><strong><%= starting_salary %></strong></div>
+          </div>
+
+          <div class="col-lg-7 col-md-11 col-sm-6 col-xs-6"> Salário Mercado:</div>
+            <div class="col-xs-11 hidden-xs"><strong><%= professional_salary %></strong></div>
+            <div class="col-xs-11 visible-xs"><strong><%= professional_salary %></strong>   
+          </div>
+
+      <% end %>
+
+      <% else %>
+        <div class="col-lg-4 col-md-3 col-sm-6 text-center how-much">
+          <div style="margin: 34px;"></div>
+          <a class="btn btn-primary btn-large-purple btn-lg" href="/users/sign_in" role="button">Quanto Ganha?</a>
+        </div>   
+      <% end %>
+</div>   

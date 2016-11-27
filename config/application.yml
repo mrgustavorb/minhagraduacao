@@ -1,0 +1,36 @@
+# config/application.yml
+defaults: &defaults
+  site:
+    maintenance: <%= ENV['SITE_MAINTENANCE'] %>
+  facebook:
+    key: <%= ENV['FACEBOOK_KEY'] %>
+    secret: <%= ENV['FACEBOOK_SECRET'] %>
+  cameratag:
+    id: <%= ENV['CAMERATAG_ID'] %>
+    uuid: <%= ENV['CAMERATAG_UUID'] %>
+  aws:
+    s3:
+      video_url: <%= ENV['AWS_S3_VIDEO_URL'] %>
+      bucket: <%= ENV['S3_BUCKET_NAME'] %>
+      access_key_id: <%= ENV['AWS_ACCESS_KEY_ID'] %>
+      secret_access_key: <%= ENV['AWS_SECRET_ACCESS_KEY'] %>      
+  smtp:
+    username: <%= ENV['SMTP_USERNAME'] %>
+    password: <%= ENV['STMP_PASSWORD'] %>
+    domain: <%= ENV['SMTP_DOMAIN'] %>
+    address: <%= ENV['SMTP_ADDRESS'] %>
+    port: <%= ENV['SMTP_PORT'] %>
+  gdata:
+    user: <%= ENV['GDATA_USER'] %>
+    pass: <%= ENV['GDATA_PASS'] %>
+    client_id: <%= ENV['GDATA_CLIENT_ID'] %>
+    dev_key: <%= ENV['GDATA_DEV_KEY'] %>
+
+development:
+  <<: *defaults
+  neat_setting: 800
+test:
+  <<: *defaults
+
+production:
+  <<: *defaults

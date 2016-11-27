@@ -1,0 +1,26 @@
+<table class="table table-bordered table-striped" id="dataTable1">
+  <thead>
+    <th>Nome</th>
+    <th>Semestres</th>
+    <th></th>
+  </thead>
+  <tbody>
+    <% @institution.graduations.each do |graduation| %>
+      <tr>
+        <td><%= graduation.name %></td>
+        <% unless graduation.profile.nil? %>
+          <td><%= graduation.profile.semesters.count %></td>
+        <% else %>
+          <td>0</td>
+        <% end %>
+        <td class="actions">
+          <div class="action-buttons">
+            <%= link_to :controller => "graduation_profiles", :action => "edit", :graduation_institution_id => graduation.graduation_institution_id do %>
+              <i class="fa fa-pencil"></i>
+            <% end %>
+          </div>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

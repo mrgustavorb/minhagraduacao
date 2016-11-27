@@ -1,0 +1,41 @@
+/*!
+ * minhagraduacao.com
+ */
+
+// settings Colors
+$colorBlue       : #0093cb;
+$colorLightBlue  : #6fc7e9;
+$colorWhite      : #FFFFFF;
+$colorGray       : #888888;
+$colorLightGray  : #e0e0e0;
+$colorDarkGray   : #333333;
+$colorPurple     : #544aa2;
+$colorLightPurple: #8378dc;
+
+@media (min-width: 320px)
+{
+    .rating-c .br-widget a {
+        width: 22px;
+    }
+}
+
+@media (min-width: 568px)
+{
+    .rating-c .br-widget a {
+        width: 44px;
+    }
+}
+@media (min-width: 1200px)
+{
+    .rating-c .br-widget a {
+        width: 55px;
+    }
+}
+
+.bootstrap-tagsinput { width: 100%; }
+
+#opinion-data {
+    em {
+        font-size: 14px;
+    }
+}

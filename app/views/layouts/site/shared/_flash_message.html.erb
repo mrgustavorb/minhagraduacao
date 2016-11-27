@@ -1,0 +1,11 @@
+<div class="row">
+  <div class="col-xs-12">
+    <%- if flash.count > 0 -%>
+      <%- flash.each do |name, msg| -%>
+        <div class=" text-center alert alert-<%= name == :notice ? 'success' : 'warning' %>">
+          <%= msg %>
+        </div>
+      <%- end -%>
+    <%- end -%>
+  </div>
+</div>

@@ -1,0 +1,269 @@
+<%- @page_internal_title = "Sou um profissional" -%>
+<%- unless params[:professional] -%>
+<%- @page_internal_subtitle = "Você sabia que quase 1 milhão de alunos abandonam a faculdade todos os anos? E a causa principal disso é de má escolha do curso de graduação. Mas você pode nos ajudar a reduzir esse número! Nos diga sua opinião sobre sua graduação e faculdade e ajude milhares de jovens que sonham em entrar no mundo acadêmico." -%>
+<%- end -%>
+
+<div id="opinion-data" class="research-professionals">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        
+        <div style="margin: 35px;"></div>
+
+        <p><span style="color: #700A0A">*</span> Essas estrelas significam que alguns campos serão obrigatórios, ok?</p>
+        
+        <div style="margin: 35px;"></div>
+        
+        <% if alert.present? %>
+          <div class="alert alert-danger">
+            <p id="alert"><i class="fa fa-times-circle"></i> <%= alert %> </p>
+          </div>  
+        <% end %>
+        
+        <div style="margin: 45px;"></div>
+
+        <form accept-charset="UTF-8" action="<%= professionals_research_save_path %>" class="simple_form form-horizontal" id="new_responsible" method="post" novalidate="novalidate">
+
+          <div style="margin:0;padding:0;display:inline">
+            <input name="utf8" type="hidden" value="&#x2713;" />
+            <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>" />
+          </div>   
+          
+          <fieldset class="title">
+            <legend><h2>Queremos te conhecer</h2></legend>
+          </fieldset>
+
+          <div class="form-group">
+            <label class="col-md-4 control-label" style="padding-top: 0px;"><span style="color: #700A0A">*</span> Selecione o estado onde estudou:</label>
+            <div class="col-md-8">
+              <select id="state_id" class="form-control" name="professional[user_profile][state_id]">
+                <option value="">Por favor selecione o seu estado.</option>
+                <%- @states.each do |state| -%>
+                  <option value="<%= state.id %>" <%= (params[:professional] && params[:professional][:user_profile][:state_id].to_i == state.id) ? 'selected="selected"' : '' %>><%= state.name %></option>
+                <%- end -%>
+              </select>
+            </div>
+          </div>
+          
+          <div class="form-group">
+            <label class="col-md-4 control-label" style="padding-top: 0px;"><span style="color: #700A0A">*</span> Selecione a faculdade que você estudava</label>
+            <div class="col-md-8">
+              <select id="institution_id" class="form-control" name="professional[user_profile][institution_id]" <%= (params[:professional] && !params[:professional][:user_profile][:state_id].blank?) ? '' : 'disabled="disabled"' %>>
+                <% if (params[:professional]) %>
+                  <option value="">Selecione uma instituição</option>
+                  <% Institution.where(uf_id: params[:professional][:user_profile][:state_id].to_i).order(:sigla).each do |institution| %>
+                    <option value="<%= institution.id %>" <%= (params[:professional] && params[:professional][:user_profile][:institution_id].to_i == institution.id) ? 'selected="selected"' : '' %>><%= "#{institution.sigla} - #{institution.name}" %></option>
+                  <% end %>
+                <% else %>
+                  <option value="">Por favor selecione o seu estado.</option>
+                <% end %>
+              </select>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="col-md-4 control-label" style="padding-top: 0px;"><span style="color: #700A0A">*</span> Qual graduação você cursou?</label>
+            <div class="col-md-8">
+              <select id="graduation_id" class="form-control" name="professional[user_profile][graduation_id]" <%= (params[:professional] && !params[:professional][:user_profile][:institution_id].blank?) ? '' : 'disabled="disabled"' %>>
+                <% if (params[:professional] && !params[:professional][:user_profile][:institution_id].blank?) %>
+                  <option value="">Selecione a sua graduação</option>
+                  <% Institution.find(params[:professional][:user_profile][:institution_id].to_i).graduations.order('name ASC').to_a.uniq.map do |graduation| %>
+                    <option value="<%= graduation.id %>" <%= (params[:professional] && params[:professional][:user_profile][:graduation_id].to_i == graduation.id) ? 'selected="selected"' : '' %>><%= graduation.name %></option>
+                  <% end %>
+                <% else %>
+                  <option value="">Por favor selecione o seu estado.</option>
+                <% end %>
+              </select>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="col-md-4 control-label" style="padding-top: 0px;"><span style="color: #700A0A">*</span> Onde você mora atualmente?</label>
+            <div class="col-md-8">
+              <input type="text" value="<%= params[:professional][:user_profile][:city] if params[:professional] %>" class="form-control" name="professional[user_profile][city]" placeholder="Cidade/Estado.">
+            </div>
+          </div>
+
+          <div class="form-group">        
+           <label class="control-label col-md-4"><span style="color: #700A0A">*</span> Sexo</label>
+            <div class="col-md-8">
+              <div class="control-group radio_buttons optional">
+                <div class="controls">
+                  <label class="radio radio-inline">
+                    <input name="professional[user_profile][gender]" value="female" <%= (params[:professional] && params[:professional][:user_profile][:gender] == 'female') ? 'checked="checked"' : '' %> class="radio_buttons optional" type="radio">Feminino
+                  </label>
+                  <label class="radio radio-inline">
+                    <input name="professional[user_profile][gender]" value="male" <%= (params[:professional] && params[:professional][:user_profile][:gender] == 'male') ? 'checked="checked"' : '' %> class="radio_buttons optional"  type="radio">Masculino
+                  </label>
+                </div>
+              </div>
+            </div>    
+          </div>
+
+          <div class="form-group">
+            <label class="control-label col-md-4"><span style="color: #700A0A">*</span> Cargo:</label>
+              <div class="col-md-8">
+                 <input type="text" name="professional[user_profile][job_title]" <%= (params[:professional] && params[:professional][:user_profile][:job_title]) %> class="form-control">  
+              </div>
+          </div>
+
+          <div style="margin: 45px;"></div>
+
+          <fieldset class="title">                                                                                                                                                                                                                                                              
+            <legend><h2>Avalie sua profissão</h2></legend>
+          </fieldset>
+
+          <%= rating_form(t('research.forms.academics_professionals.graduation_professional'), 'professional[evaluation_graduations][graduation_professional]', params[:professional] ? params[:professional][:evaluation_graduations][:graduation_professional] : nil) %>
+          <%= rating_form(t('research.forms.academics_professionals.social_recognition'), 'professional[evaluation_graduations][social_recognition]', params[:professional] ? params[:professional][:evaluation_graduations][:social_recognition] : nil) %>
+          <%= rating_form(t('research.forms.academics_professionals.graduation_difficulty'), 'professional[evaluation_graduations][graduation_difficulty]', params[:professional] ? params[:professional][:evaluation_graduations][:graduation_difficulty] : nil) %>
+          <%= rating_form(t('research.forms.academics_professionals.renumbered_training'), 'professional[evaluation_graduations][renumbered_training]', params[:professional] ? params[:professional][:evaluation_graduations][:renumbered_training] : nil) %>
+          <%= rating_form(t('research.forms.academics_professionals.first_job'), 'professional[evaluation_graduations][first_job]', params[:professional] ? params[:professional][:evaluation_graduations][:first_job] : nil) %>
+          <%= rating_form(t('research.forms.academics_professionals.job_most_areas'), 'professional[evaluation_graduations][job_most_areas]', params[:professional] ? params[:professional][:evaluation_graduations][:job_most_areas] : nil) %>
+          <%= rating_form(t('research.forms.academics_professionals.tendering'), 'professional[evaluation_graduations][tendering]', params[:professional] ? params[:professional][:evaluation_graduations][:tendering] : nil) %>
+
+          <div class="form-group">
+            <label for="starting_salary" class="col-md-5 control-label"><span style="color: #700A0A">*</span> Qual, em média, é o salário inicial no seu curso?</label>
+            <div class="col-md-7">
+             <select id="starting_salary" class="form-control" name="professional[evaluation_graduations][starting_salary]">
+               <option value="">Selecione o valor.</option>
+               <option value="1" <%= (params[:professional] && params[:professional][:evaluation_graduations][:starting_salary] == '1') ? 'selected="selected"' : '' %> >Até R$ 1.000,00</option>
+               <option value="2" <%= (params[:professional] && params[:professional][:evaluation_graduations][:starting_salary] == '2') ? 'selected="selected"' : '' %> >Entre R$ 1.000,00 e R$ 2.000,00</option>
+               <option value="3" <%= (params[:professional] && params[:professional][:evaluation_graduations][:starting_salary] == '3') ? 'selected="selected"' : '' %> >Entre R$ 2.000,00 e R$ 3.000,00</option>
+               <option value="4" <%= (params[:professional] && params[:professional][:evaluation_graduations][:starting_salary] == '4') ? 'selected="selected"' : '' %> >Entre R$ 3.000,00 e R$ 4.000,00</option>
+               <option value="5" <%= (params[:professional] && params[:professional][:evaluation_graduations][:starting_salary] == '5') ? 'selected="selected"' : '' %> >Entre R$ 4.000,00 e R$ 5.000,00</option>
+               <option value="6" <%= (params[:professional] && params[:professional][:evaluation_graduations][:starting_salary] == '6') ? 'selected="selected"' : '' %> >Acima de R$ 5.000,00</option>
+             </select>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="professional_salary" class="col-md-5 control-label"><span style="color: #700A0A">*</span> Qual o salário, em média, de um profissional que ocupa um cargo parecido com o seu?</label>
+            <div class="col-md-7">
+              <select id="professional_salary" class="form-control" name="professional[evaluation_graduations][professional_salary]">
+                <option value="">Selecione o valor.</option>
+                <option value="1" <%= (params[:professional] && params[:professional][:evaluation_graduations][:professional_salary] == '1') ? 'selected="selected"' : '' %> >Até R$ 2.000,00</option>
+                <option value="2" <%= (params[:professional] && params[:professional][:evaluation_graduations][:professional_salary] == '2') ? 'selected="selected"' : '' %> >Entre R$ 2.000,00 e R$ 3.000,00</option>
+                <option value="3" <%= (params[:professional] && params[:professional][:evaluation_graduations][:professional_salary] == '3') ? 'selected="selected"' : '' %> >Entre R$ 3.000,00 e R$ 4.000,00</option>
+                <option value="4" <%= (params[:professional] && params[:professional][:evaluation_graduations][:professional_salary] == '4') ? 'selected="selected"' : '' %> >Entre R$ 4.000,00 e R$ 5.000,00</option>
+                <option value="5" <%= (params[:professional] && params[:professional][:evaluation_graduations][:professional_salary] == '5') ? 'selected="selected"' : '' %> >Entre R$ 5.000,00 e R$ 7.000,00</option>
+                <option value="6" <%= (params[:professional] && params[:professional][:evaluation_graduations][:professional_salary] == '6') ? 'selected="selected"' : '' %> >Entre R$ 7.000,00 e R$ 10.000,00</option>
+                <option value="7" <%= (params[:professional] && params[:professional][:evaluation_graduations][:professional_salary] == '7') ? 'selected="selected"' : '' %> >Acima de R$ 10.000,00</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="advantage" class="col-lg-5 col-md-5 control-label"><span style="color: #700A0A">*</span> Prós</label>
+            <div class="col-lg-7 col-md-7">
+              <textarea name="professional[evaluation_graduations][advantage]" class="form-control" rows="2" placeholder="Comente os principais pontos positivos que a sua profissão possui."><%= params[:professional][:evaluation_graduations][:advantage] if params[:professional] %></textarea>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="disadvantage" class="col-lg-5 col-md-5 control-label"><span style="color: #700A0A">*</span> Contras</label>
+            <div class="col-lg-7 col-md-7">
+              <textarea name="professional[evaluation_graduations][disadvantage]" class="form-control" rows="2" placeholder="Comente os principais pontos negativos que a sua profissão possui."><%= params[:professional][:evaluation_graduations][:disadvantage] if params[:professional] %></textarea>
+            </div>
+          </div>
+
+          <fieldset class="title">
+            <legend><h3><span style="color: #700A0A">*</span> O quanto você recomendaria a sua graduação a um amigo?</h3></legend>
+          </fieldset>
+
+          <div class="form-group">      
+            <div class="col-md-12">
+              <div class="row row-centered">
+                <div class="col-centered">
+                  <div class="input select rating-c">
+                    <select class="example-c" name="professional[evaluation_graduations][recommendation]">
+                      <option value=""></option>
+                      <option value="0" <%= (params[:professional] && params[:professional][:evaluation_graduations][:recommendation] == '0') ? 'selected="selected"' : '' %> >0</option>
+                      <option value="1" <%= (params[:professional] && params[:professional][:evaluation_graduations][:recommendation] == '1') ? 'selected="selected"' : '' %> >1</option>
+                      <option value="2" <%= (params[:professional] && params[:professional][:evaluation_graduations][:recommendation] == '2') ? 'selected="selected"' : '' %> >2</option>
+                      <option value="3" <%= (params[:professional] && params[:professional][:evaluation_graduations][:recommendation] == '3') ? 'selected="selected"' : '' %> >3</option>
+                      <option value="4" <%= (params[:professional] && params[:professional][:evaluation_graduations][:recommendation] == '4') ? 'selected="selected"' : '' %> >4</option>
+                      <option value="5" <%= (params[:professional] && params[:professional][:evaluation_graduations][:recommendation] == '5') ? 'selected="selected"' : '' %> >5</option>
+                      <option value="6" <%= (params[:professional] && params[:professional][:evaluation_graduations][:recommendation] == '6') ? 'selected="selected"' : '' %> >6</option>
+                      <option value="7" <%= (params[:professional] && params[:professional][:evaluation_graduations][:recommendation] == '7') ? 'selected="selected"' : '' %> >7</option>
+                      <option value="8" <%= (params[:professional] && params[:professional][:evaluation_graduations][:recommendation] == '8') ? 'selected="selected"' : '' %> >8</option>
+                      <option value="9" <%= (params[:professional] && params[:professional][:evaluation_graduations][:recommendation] == '9') ? 'selected="selected"' : '' %> >9</option>
+                      <option value="10" <%= (params[:professional] && params[:professional][:evaluation_graduations][:recommendation] == '10') ? 'selected="selected"' : '' %> >10</option>
+                    </select>
+                  </div>   
+                </div>   
+              </div>   
+            </div>   
+          </div>
+
+          <div style="margin: 45px;"></div>
+
+          <fieldset class="title">
+             <legend><h2>Avalie a sua Faculdade</h2></legend>
+          </fieldset>
+
+          <%= rating_form(t('research.forms.academics_professionals.accreditation'), 'professional[evaluation_institutions][accreditation]', params[:professional] ? params[:professional][:evaluation_institutions][:accreditation] : nil) %>
+          <%= rating_form(t('research.forms.academics_professionals.website_academic'), 'professional[evaluation_institutions][website_academic]', params[:professional] ? params[:professional][:evaluation_institutions][:website_academic] : nil) %>
+          <%= rating_form(t('research.forms.academics_professionals.professor'), 'professional[evaluation_institutions][professor]', params[:professional] ? params[:professional][:evaluation_institutions][:professor] : nil) %>
+          <%= rating_form(t('research.forms.academics_professionals.level_students'), 'professional[evaluation_institutions][level_students]', params[:professional] ? params[:professional][:evaluation_institutions][:level_students] : nil) %>
+          <%= rating_form(t('research.forms.academics_professionals.money'), 'professional[evaluation_institutions][money]', params[:professional] ? params[:professional][:evaluation_institutions][:money] : nil) %>
+          <%= rating_form(t('research.forms.academics_professionals.student_organizations'), 'professional[evaluation_institutions][student_organizations]', params[:professional] ? params[:professional][:evaluation_institutions][:student_organizations] : nil) %>
+          <%= rating_form(t('research.forms.academics_professionals.sector_stage'), 'professional[evaluation_institutions][sector_stage]', params[:professional] ? params[:professional][:evaluation_institutions][:sector_stage] : nil) %>
+          <%= rating_form(t('research.forms.academics_professionals.security'), 'professional[evaluation_institutions][security]', params[:professional] ? params[:professional][:evaluation_institutions][:security] : nil) %>
+          <%= rating_form(t('research.forms.academics_professionals.pratical_activities'), 'professional[evaluation_institutions][pratical_activities]', params[:professional] ? params[:professional][:evaluation_institutions][:pratical_activities] : nil) %>
+          <%= rating_form(t('research.forms.academics_professionals.infrastructure'), 'professional[evaluation_institutions][infrastructure]', params[:professional] ? params[:professional][:evaluation_institutions][:infrastructure] : nil) %>
+          <%= rating_form(t('research.forms.academics_professionals.academic_exchange'), 'professional[evaluation_institutions][academic_exchange]', params[:professional] ? params[:professional][:evaluation_institutions][:academic_exchange] : nil) %>
+
+
+          <div class="form-group">
+            <label for="video_state_id" class="col-lg-5 col-md-5 control-label"><span style="color: #700A0A">*</span> Prós</label>
+            <div class="col-lg-7 col-md-7">
+              <textarea name="professional[evaluation_institutions][advantage]" class="form-control" rows="2" placeholder="Comente os principais pontos positivos que a sua faculdade possui."><%= params[:professional][:evaluation_institutions][:advantage] if params[:professional] %></textarea>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="video_state_id" class="col-lg-5 col-md-5 control-label"><span style="color: #700A0A">*</span> Contras</label>
+            <div class="col-lg-7 col-md-7">
+              <textarea name="professional[evaluation_institutions][disadvantage]" class="form-control" rows="2" placeholder="Comente os principais pontos negativos que a sua faculdade possui."><%= params[:professional][:evaluation_institutions][:disadvantage] if params[:professional] %></textarea>
+            </div>
+          </div>
+
+          <div style="margin: 50px;"></div>
+
+          <fieldset class="title">
+            <legend><h3><span style="color: #700A0A">*</span> O quanto você recomendaria a sua faculdade a um amigo?</h3></legend>
+          </fieldset>
+
+          <div class="form-group">      
+            <div class="col-md-12">
+              <div class="row row-centered">
+                <div class="col-centered">
+                  <div class="input select rating-c">
+                    <select class="example-c" name="professional[evaluation_institutions][recommendation]">
+                      <option value=""></option>
+                      <option value="0" <%= (params[:professional] && params[:professional][:evaluation_institutions][:recommendation] == '0') ? 'selected="selected"' : '' %> >0</option>
+                      <option value="1" <%= (params[:professional] && params[:professional][:evaluation_institutions][:recommendation] == '1') ? 'selected="selected"' : '' %> >1</option>
+                      <option value="2" <%= (params[:professional] && params[:professional][:evaluation_institutions][:recommendation] == '2') ? 'selected="selected"' : '' %> >2</option>
+                      <option value="3" <%= (params[:professional] && params[:professional][:evaluation_institutions][:recommendation] == '3') ? 'selected="selected"' : '' %> >3</option>
+                      <option value="4" <%= (params[:professional] && params[:professional][:evaluation_institutions][:recommendation] == '4') ? 'selected="selected"' : '' %> >4</option>
+                      <option value="5" <%= (params[:professional] && params[:professional][:evaluation_institutions][:recommendation] == '5') ? 'selected="selected"' : '' %> >5</option>
+                      <option value="6" <%= (params[:professional] && params[:professional][:evaluation_institutions][:recommendation] == '6') ? 'selected="selected"' : '' %> >6</option>
+                      <option value="7" <%= (params[:professional] && params[:professional][:evaluation_institutions][:recommendation] == '7') ? 'selected="selected"' : '' %> >7</option>
+                      <option value="8" <%= (params[:professional] && params[:professional][:evaluation_institutions][:recommendation] == '8') ? 'selected="selected"' : '' %> >8</option>
+                      <option value="9" <%= (params[:professional] && params[:professional][:evaluation_institutions][:recommendation] == '9') ? 'selected="selected"' : '' %> >9</option>
+                      <option value="10" <%= (params[:professional] && params[:professional][:evaluation_institutions][:recommendation] == '10') ? 'selected="selected"' : '' %> >10</option>
+                    </select>
+                  </div>   
+                </div>   
+              </div>   
+            </div>   
+          </div>
+
+          <div style="margin: 20px;"></div>
+          <input class="btn btn-primary btn-lg btn-block btn-large-purple" name="commit" type="submit" value="Finalizar">
+
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

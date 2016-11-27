@@ -1,0 +1,56 @@
+<%- @page_internal_title = @institution.sigla -%>
+<%- @page_internal_subtitle = @institution.name -%>
+
+<div class="row">
+
+    <div class="col-lg-4">
+      <div class="logo">
+        <%- unless @institution.profile.avatar_updated_at.nil? -%> 
+          <img class="img-responsive" src="<%= @institution.profile.avatar_url %>" alt="<%=@institution.name%>">
+        <% else %>
+          <%= image_tag 'university_school.png', class: 'img-responsive', width: '80', alt: @institution.name%>
+        <% end %>
+        <div class="fb-like" data-href="<%= institution_show_perfil_path(@institution.url_friendly, @institution.id) %>" data-layout="button_count" data-action="like" data-show-faces="true" data-share="true"></div>
+      </div>
+    </div>
+
+  <div class="col-lg-8">
+    <div class="row">
+      
+      <%- unless @institution.profile.nil? -%>
+
+        <% unless @institution.profile.site.blank? %> 
+          <div class="col-lg-8">
+            <blockquote>
+              <p>Site</p>
+              <a href="<%=verify_http_protocol_in_url(@institution.profile.site)%>" target="_blank" style="word-wrap: break-word;">
+                <%=verify_http_protocol_in_url(@institution.profile.site)%>
+              </a>
+            </blockquote>
+          </div>
+        <% end %>
+
+        <% unless @institution.profile.phone.blank? %> 
+          <div class="col-lg-4">
+            <blockquote>
+              <p>Tel:</p>
+              <%= @institution.profile.phone %>
+            </blockquote>
+          </div>
+        <% end %>
+        
+        <br />
+
+        <% unless @institution.profile.address.blank? %> 
+          <div class="col-lg-12">
+            <blockquote>
+              <p>Endereço</p>
+              <%= @institution.profile.address %>
+            </blockquote>
+          </div>
+        <% end %>
+      
+      <% end %>
+    </div>
+  </div>
+</div>

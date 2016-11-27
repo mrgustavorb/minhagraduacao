@@ -1,0 +1,46 @@
+<div class="row">
+  <div class="col-sm-12">
+    <section class="panel">
+      <header class="panel-heading">
+        <%= link_to new_employees_graduation_group_path, class: "btn btn-primary btn-sm" do %> <strong>Cadastrar</strong> <% end %>
+      </header>
+      <div class="panel-body">
+       
+        <%= grid(@graduation_groups) do |g|
+
+          g.column name: 'ID', attribute: 'id' do |graduation_group|
+            graduation_group.id
+          end
+
+          g.column name: 'Nome', attribute: 'name'  do |graduation_group|
+            graduation_group.name
+          end
+
+          g.column name: 'Total de Avaliações', filter: false do |graduation_group|
+            graduation_group.evaluation_graduations.count(1)
+          end
+
+          g.column name: 'Total de Instituições', filter: false do |graduation_group|
+            graduation_group.institutions.count(1)
+          end
+
+          g.column name: 'Texto Sobre?', filter: false do |graduation_group|
+            "<span class='label label-#{graduation_group.description.blank? ? 'warning' : 'success'}'>#{graduation_group.description.nil? ? 'Não' : 'Sim'}</span>".html_safe
+          end
+
+          g.column   do |graduation_group|
+            link_to edit_employees_graduation_group_path(graduation_group), class: 'table-actions' do 
+              "<i class='fa fa-bar-chart-o'></i>".html_safe
+            end
+            link_to edit_employees_graduation_group_path(graduation_group), class: 'table-actions' do 
+              "<i class='fa fa-pencil'></i>".html_safe
+            end
+          end
+
+        end -%>
+
+
+      </div>
+    </section>
+  </div>
+</div>

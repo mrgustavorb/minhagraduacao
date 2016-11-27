@@ -1,0 +1,29 @@
+<div style="margin: 20px;"></div>
+
+<div class="row">
+  <div class="col-lg-12">
+    <div class="row row-centered">
+      <div class="col-lg-6 col-centered">
+        <div class="services-box">
+            <i class="fa fa-star"></i>
+            <i class="fa fa-star-half-o"></i>
+            <i class="fa fa-star-o"></i>
+            <p class="alert alert-warning">
+              Ainda não existem avaliações para essa graduação <br />  Compartilhe a sua opinião sobre a graduação que escolheu. <br /><br /> <strong>É fácil e rápido!</strong>
+            </p>    
+            <p>
+              <% if (signed_in? && !current_user.answered) %>
+               <%= link_to 'Avaliar Minha Graduação!', new_user_session_path, 'class' => 'btn btn-blue' %>
+              <% end %>
+              
+              <% if (!signed_in?) %>
+               <%= link_to 'Avaliar Minha Graduação!', new_user_session_path, 'class' => 'btn btn-blue' %>
+              <% end %>
+            </p>
+        </div>
+      </div>        
+    </div>       
+  </div>    
+</div> 
+
+<div style="margin: 20px;"></div>

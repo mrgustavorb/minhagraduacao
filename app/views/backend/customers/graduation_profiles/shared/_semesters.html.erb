@@ -1,0 +1,35 @@
+<div class="row">
+  <div class="col-sm-12">
+    <section class="panel">
+      <header class="panel-heading">
+        <span class="vertical-align-middle pull-left">
+          <%= link_to customers_semesters_path(@graduation_profile), class: "btn btn-primary btn-sm" do %> <strong>Adicionar Semestre</strong> <%- end -%>
+        </span>
+      </header>
+      <div class="panel-body">
+        <table class="table table-hover table-bordered table-striped">
+          <thead>
+            <th>Nome</th>
+            <th>Total Disciplinas</th>
+            <th></th>
+          </thead>
+          <tbody>
+            <% @graduation_profile.semesters.each do |semester| %>
+              <tr>
+                <td><%= semester.number_semester %>˚ Semestre</td>
+                <td><%= semester.disciplines.count %></td>
+                <td class="actions">
+                  <div class="action-buttons">
+                    <%= link_to :controller => "semesters", :action => "edit", :graduation_profile_id => @graduation_profile, :semester_id => semester do %>
+                      <i class="fa fa-pencil"></i>
+                    <% end %>
+                  </div>
+                </td>
+              </tr>
+            <%- end -%>
+          </tbody>
+        </table>
+      </div>
+    </section>
+  </div>
+</div>

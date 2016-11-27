@@ -1,0 +1,8 @@
+<%- if @alternative_results.present? -%>
+    <%- @page_internal_title = "Não encontramos a graduação: \"#{params[:q]}\" =(" -%>
+    <%- @page_internal_subtitle = "Veja se as opções abaixo te agradam"-%>
+<%- else -%>
+    <%- @page_internal_title = "Encontramos #{@graduations.count} #{@graduations.count > 1 ? 'graduações' : 'graduação'}" -%>
+<%- end -%> 
+
+<%= render 'site/graduations/shared/error_view_graduations' %>

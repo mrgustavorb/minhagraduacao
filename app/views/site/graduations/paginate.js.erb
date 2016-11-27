@@ -1,0 +1,6 @@
+$('.videos').append('<%= escape_javascript(render partial: "videos/shared/video_thumb", :locals => { :videos => @videos }) %>');
+$('a.load-more-videos').attr('href', '<%= url_for controller: :graduations, action: :paginate, url_friendly: @graduation_group.url_friendly, type_view: params[:type_view], opinion_type: params[:opinion_type], :page => @videos.next_page %>');
+
+<% unless @videos.next_page %>
+  $('a.load-more-videos').remove();
+<% end %>

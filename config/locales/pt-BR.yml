@@ -1,0 +1,88 @@
+# Files in the config/locales directory are used for internationalization
+# and are automatically loaded by Rails. If you want to use locales other
+# than English, add the necessary files in this directory.
+#
+# To use the locales, use `I18n.t`:
+#
+#     I18n.t 'hello'
+#
+# In views, this is aliased to just `t`:
+#
+#     <%= t('hello') %>
+#
+# To use a different locale, set it with `I18n.locale`:
+#
+#     I18n.locale = :es
+#
+# This would use the information in config/locales/es.yml.
+#
+# To learn more, please read the Rails Internationalization guide
+# available at http://guides.rubyonrails.org/i18n.html.
+
+pt-BR:
+  enumerize:
+    institution:
+      academic_organization_id:
+        universidade: "Universidade"
+        centro_universitario: "Centro Universitário"
+        faculdade: "Faculdade"
+        instituto_federal: "Instituto Federal"
+        centro_federal: "Centro Federal"
+
+  activerecord:
+    successful:
+      messages:
+        create: "Registro <strong>criado</strong> com sucesso."
+        update: "Registro <strong>atualizado</strong> com sucesso."
+        destroy: "Registro <strong>removido</strong> com sucesso."
+        error: "<strong>Não foi possivel salvar o registro</strong>, verifique os campos em vermelho no formulário."
+
+  research: 
+    forms:
+       academics_professionals:
+
+         # Avaliação sobre a graduação
+         graduation_professional: 'Nível dos profissionais.' #Somente para profissional
+         social_recognition:      'Reconhecimento pela sociedade.'
+         graduation_difficulty:   'Facilidade do curso.'
+         renumbered_training:     'Facilidade de conseguir estágio remunerado.'
+         first_job:               'Facilidade de conseguir o primeiro emprego.'
+         job_most_areas:          'Possibilidade de atuar em várias áreas.'
+         tendering:               'Oportunidade de concurso público.'
+
+         # Avaliação sobre a Faculdade
+         accreditation:           'Reconhecimento no mercado.'
+         website_academic:        'Portal acadêmico.'
+         professor:               'Qualidade dos professores.'
+         level_students:          'Qualidade dos alunos.'
+         money:                   'Custo benefício (Valor da mensalidade X Qualidade da Faculdade).'
+         student_organizations:   "Entidades estudantis (Centro/Departamento acadêmico, empresa junior, atlética etc.)."
+         sector_stage:            'Qualidade do setor de Estágio/Emprego.'
+         security:                'Qualidade da segurança.'
+         pratical_activities:     'Núcleo de Atividades Práticas'
+         infrastructure:          'Infraestrutura (Rampas de acesso, salas de aula, laboratórios etc.).'
+         academic_exchange:       'Núcleo de intercâmbio acadêmico'
+
+       students:
+
+         # Avaliação da escola
+         security:                'Segurança.'
+         teachers:                'Qualidade dos professores.'
+         coordinators:             'Qualidade dos Coordenadores e Diretores.'
+         laboratory:              'Qualidade dos laboratórios.'
+         physical_structure:      'Estrutura Física (Salas de aula, quadra esportiva, rampas de acesso etc.).'
+         classmates:              'Nível educacional dos colegas de sala.'
+         methodology:             'Metodologia de ensino.'
+         extra_activities:        'Eventos e atividades extras da escola.'
+         sports_activities:       'Qualidade das atividades esportivas.'
+
+         # Avaliação da Faculdade
+         accreditation:        'A faculdade ser reconhecida pelo mercado.'
+         infrastructure:       'A faculdade possuir estrutura física de qualidade.'
+         professor:            'Qualidade dos professores da faculdade.'
+         coordinator:          'Qualidade dos coordenadores da facudade.' 
+         money:                'Custo benefício (Valor da mensalidade X Qualidade da Faculdade).'
+         level_students:       'Qualidade dos alunos da faculdade.'
+         extra_activities:     'A faculdade possuir atividades extras (Aulas de campo, palestras etc.).' 
+         sports_activities:    'A faculdade possuir atividades esportivas.'
+         academic_exchange:    'A faculdade possuir um setor de intercâmbio de qualidade.'

@@ -1,0 +1,79 @@
+<!-- RawBlameHistory   -->
+<!--mini statistics start-->
+<div class="row">
+
+
+  <div class="col-md-3">
+    <div class="mini-stat clearfix" style="cursor: pointer;" onclick="javaascript:window.location.href='#'">
+      <span class="mini-stat-icon tar"><i class="fa fa-building-o"></i></span>
+      <div class="mini-stat-info">
+        <span><%= Institution.count(1) %></span> Instituições
+      </div>
+    </div>
+  </div>
+
+  <div class="col-md-3">
+    <div class="mini-stat clearfix" style="cursor: pointer;" onclick="javaascript:window.location.href='#'">
+      <span class="mini-stat-icon tar"><i class="fa fa-book"></i></span>
+      <div class="mini-stat-info">
+        <span><%= GraduationGroup.count(1) %></span> Graduações
+      </div>
+    </div>
+  </div>
+
+  <div class="col-md-3">
+    <div class="mini-stat clearfix" style="cursor: pointer;" onclick="javaascript:window.location.href='#'">
+      <span class="mini-stat-icon tar"><i class="fa fa-comments-o"></i></span>
+      <div class="mini-stat-info">
+        <span><%= EvaluationGraduation.count(1) %></span> Avaliações
+      </div>
+    </div>
+  </div>
+
+  <div class="col-md-3">
+    <div class="mini-stat clearfix" style="cursor: pointer;" onclick="javaascript:window.location.href='#'">
+      <span class="mini-stat-icon tar"><i class="fa fa-home"></i></span>
+      <div class="mini-stat-info">
+        <span><%= School.count(1) %></span> Escolas(s)
+      </div>
+    </div>
+  </div>
+
+  <div class="col-md-3">
+    <div class="mini-stat clearfix" style="cursor: pointer;" onclick="javaascript:window.location.href='#'">
+      <span class="mini-stat-icon tar"><i class="fa fa-group (alias)"></i></span>
+      <div class="mini-stat-info">
+        <span><%= User.count(1) %></span> Usuário(s)
+      </div>
+    </div>
+  </div>
+
+  <div class="col-md-3">
+    <div class="mini-stat clearfix" style="cursor: pointer;" onclick="javaascript:window.location.href='#'">
+      <span class="mini-stat-icon tar"><i class="fa fa-user"></i></span>
+      <div class="mini-stat-info">
+        <span><%= User.students.count(1) %></span> Estudante(s) do E.M
+      </div>
+    </div>
+  </div>
+
+  <div class="col-md-3">
+    <div class="mini-stat clearfix" style="cursor: pointer;" onclick="javaascript:window.location.href='#'">
+      <span class="mini-stat-icon tar"><i class="fa fa-user"></i></span>
+      <div class="mini-stat-info">
+        <span><%= User.academics.count(1) %></span> Universitário(s)
+      </div>
+    </div>
+  </div>
+
+  <div class="col-md-3">
+    <div class="mini-stat clearfix" style="cursor: pointer;" onclick="javaascript:window.location.href='#'">
+      <span class="mini-stat-icon tar"><i class="fa fa-briefcase"></i></span>
+      <div class="mini-stat-info">
+        <span><%= User.professionals.count(1) %></span> Profissional(ais)
+      </div>
+    </div>
+  </div>
+
+</div>
+<!--mini statistics end-->

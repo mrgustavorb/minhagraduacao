@@ -1,0 +1,24 @@
+development:
+  adapter:  postgresql
+  encoding: unicode
+  database: 'insert database name'
+  pool:     5
+  template: template0
+  username: 'insert database user'
+
+
+test:
+  adapter:  postgresql
+  encoding: unicode
+  database: 'insert database name'
+  template: template0
+  pool:     5
+
+production: 
+  adapter: postgresql 
+  encoding: unicode 
+  database: 'insert database name'
+  pool: 5 
+  host: 'insert a server ip'
+  username: 'insert database user' 
+  password: 'insert a passwr'

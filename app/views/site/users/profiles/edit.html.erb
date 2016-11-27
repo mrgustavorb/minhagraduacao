@@ -1,0 +1,22 @@
+<%- @page_title = 'Meu Perfil' -%>
+<%= form_for @profile, url: {action: :update} do |f| %>
+  <div>
+    <%= f.label :name, 'Nome' %><br/>
+    <%= f.text_field :name, class: 'form-control' %><br/>
+  </div>
+
+  <div>
+    <%= f.label :birthday, 'Data de Nascimento' %><br/>
+    <%= f.date_select :birthday, { start_year: 1900, end_year: Date.today.year }, { class: '' } %><br/>
+  </div>
+
+  <div>
+    <%= f.label :gender, 'Gênero' %><br/>
+    <%= f.select :gender, [['Feminino', false], ['Masculino', true]], {},
+    :class => 'form-control' %>
+  </div>
+
+  <div class="login-actions">
+    <%= f.submit 'Atualizar meu perfil', class: 'btn btn-primary' %>
+  </div>
+<% end %>

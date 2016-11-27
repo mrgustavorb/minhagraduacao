@@ -1,0 +1,104 @@
+<% title @graduation_group.sigla + " - " + @institution.name %>
+<% keywords "Faculdades,Universidade,Graduação," + @graduation_group.sigla + "," + @institution.name %>
+
+<div id="show_institution">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-12">
+        
+        <!-- Logo and Informations -->
+        <div class="section-logo-informations">
+          <%= render "institutions/shared/section_logo_information" %>
+        </div>
+        <!-- End Logo and Informations -->
+            
+        <!-- Graduation -->
+        <div class="section-graduations">
+          <%= render "institutions/shared/section_graduation" %>
+        </div>
+        <!-- End Graduations --> 
+
+        <!-- Other Graduations -->
+        <div class="section-graduations">
+          <%= render "institutions/shared/section_other_graduations" %>
+        </div>
+        <!-- End Other Graduations -->
+        
+        <!-- Photos -->
+        <div class="section-photos">
+          <%#= render "institutions/shared/section_photos" %>
+        </div>
+        <!-- End Photos -->
+        
+        <% unless @institution.institution_profile.video_link.empty? %> 
+          <!-- Videos -->
+          <div class="section-video">
+            <div class="title-section">
+              <div class="row">
+                <div class="col-lg-12">
+                  <h2>Video da Instituição</h2>
+                </div>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-lg-12">
+                <%= youtube_embed(@institution.institution_profile.video_link) %>
+              </div>
+            </div>
+          </div>
+          <!-- End Videos -->
+        <% end %> 
+
+        <!-- Other informations -->
+        <div class="section-other-informations">
+          <%= render "institutions/shared/section_other_informations" %>
+        </div>
+        <!-- End Other informations -->
+       
+        <!-- Polos -->
+        <div class="section-contact">
+          <div class="title-section">
+            <div class="row">
+              <div class="col-lg-12">
+                <h2>Polos</h2>
+              </div>
+            </div>
+          </div>        
+
+          <div class="row">
+            <div class="col-lg-12">
+              <iframe src="https://www.google.com/maps/embed?pb=!1m12!1m8!1m3!1d31849.326981700724!2d-38.4751762!3d-3.7740624!3m2!1i1024!2i768!4f13.1!2m1!1sUnifor!5e0!3m2!1spt-BR!2sbr!4v1397241814134" width="100%" height="450" frameborder="0" style="border:0"></iframe>
+            </div>
+          </div>
+        </div>
+        <!-- End Contact -->
+
+        <!-- Contact -->
+        <div class="section-contact">
+          <div class="title-section">
+            <div class="row">
+              <div class="col-lg-12">
+                <h2 >Contato</h2>
+              </div>
+            </div>
+          </div>        
+
+          <div class="row">
+            <div class="col-lg-4">
+              [form]
+            </div>
+          </div>
+        </div>
+        <!-- End Contact -->
+
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+jQuery(document).ready(function() {
+  location.hash && $(location.hash + '.collapse').collapse('show');
+});
+</script>

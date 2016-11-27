@@ -1,0 +1,33 @@
+<div class="login-reg">
+  <!-- Login Form -->
+  <div class="login-reg-form">
+    <%= link_to image_tag("LogoTopoLogin.png", class: "center-block img-responsive"), root_path %>
+    	<%= form_for(resource, :as => resource_name, :url => password_path(resource_name), html: { id: 'form-toggle-2', class: 'form-toggle form-horizontal', role: 'form' }) do |f| %>
+  	  <%= devise_error_messages! %>
+  	  
+      <br /> 
+      
+      <h4>Redefinir Senha</h4>
+
+      <br />
+
+      <div class="form-group">
+        <div class="col-xs-12">
+          <!-- Input -->
+          <%= f.email_field :email, :autofocus => true, :placeholder => "E-mail", class: 'form-control input-lg' %>
+        </div>
+      </div>
+
+      <br />
+
+  	  <div class="form-group">
+        <div class="col-xs-12">
+          <!-- Button -->
+          <button type="submit" class="btn btn-primary btn-lg btn-block btn-green">Enviar Solicitação</button>&nbsp;
+        </div>
+      </div> 
+    
+    <% end %>
+
+  </div>
+</div>

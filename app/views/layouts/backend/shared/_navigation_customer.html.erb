@@ -1,0 +1,17 @@
+<aside>
+  <div id="sidebar" class="nav-collapse">
+    <!-- sidebar menu start-->            
+    <div class="leftside-navigation">
+      <ul class="sidebar-menu" id="nav-accordion">
+        <%= nav_link 'Dashboard', '/', 'employees/dashboard', 'fa fa-dashboard' %>
+        <% if get_current_user.institutions.count == 1 %>
+          <%= nav_link 'Minha Página', edit_customers_institution_path(get_current_user.institutions.first.id), 'customers/institutions', 'fa fa-home' %>
+        <% else %>
+          <%= nav_link 'Instituição', customers_institutions_path, 'customers/institutions', 'fa fa-home' %>
+        <% end %>
+      </ul>
+    </div>        
+    <!-- sidebar menu end-->
+  </div>
+</aside>
+<!--sidebar end-->

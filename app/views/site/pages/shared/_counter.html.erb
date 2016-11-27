@@ -1,0 +1,55 @@
+<!-- Counter #1 starts -->
+<div class="counter-one text-center">
+  <div class="container">
+    <div class="counter-content">
+      <div class="row">
+        <div class="col-xs-offset-1 col-md-2 col-sm-4 col-xs-6">
+          <!-- Counter content item -->
+          <div class="counter-item">
+            <div class="item active img-responsive"><img src="/assets/IconInsti.png" width="25" height="25" ></div><br />
+            <span class="number-count" data-from="0" data-to="<%= Institution.count(1) %>" data-speed="2000" data-refresh-interval="100"></span>
+            <hr class="br-yellow" />
+            <h5>Instituições</h5>
+          </div>
+        </div>
+        <div class="col-md-2 col-sm-4 col-xs-6">
+          <!-- Counter content item -->
+          <div class="counter-item">
+            <div class="item active img-responsive"><img src="/assets/IconGradu.png" width="22" height="30" ></div><br />
+            <span class="number-count" data-from="0" data-to="<%= GraduationGroup.count(1) %>" data-speed="2000" data-refresh-interval="100"></span>
+            <hr class="br-green" />
+            <h5>Graduações</h5>
+          </div>
+        </div>
+        <div class="col-md-2 col-sm-4 col-xs-6">
+          <!-- Counter content item -->
+          <div class="counter-item">
+            <div class="item active img-responsive"><img src="/assets/IconCome.png" width="28" height="20" ></div><br />
+            <span class="number-count" data-from="0" data-to="<%= EvaluationGraduation.count(1) %>" data-speed="2000" data-refresh-interval="100"></span>
+            <hr class="br-lblue" />
+            <h5>Avaliações</h5>
+          </div>
+        </div>
+        <div class="col-md-2 col-sm-4 col-xs-6">
+          <!-- Counter content item -->
+          <div class="counter-item">
+            <div class="item active img-responsive"><img src="/assets/IconUni.png" width="26" height="20" ></div><br />
+            <span class="number-count" data-from="0" data-to="<%= EvaluationInstitution.academics.count(1) %>" data-speed="2000" data-refresh-interval="100"></span>
+            <hr class="br-purple" />
+            <h5>Universitários</h5>
+          </div>
+        </div>
+        <div class="col-md-2 col-sm-4 col-xs-6">
+          <!-- Counter content item -->
+          <div class="counter-item">
+            <div class="item active img-responsive"><img src="/assets/IconPro.png" width="10" height="25" ></div><br />
+            <span class="number-count" data-from="0" data-to="<%= EvaluationInstitution.professionals.count(1) %>" data-speed="2000" data-refresh-interval="100"></span>
+            <hr class="br-red" />
+            <h5>Profissionais</h5>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Counter #1 ends -->

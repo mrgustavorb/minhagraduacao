@@ -1,0 +1,49 @@
+<!-- Filter -->
+<div class="filter-institution">
+  <div class="row">
+    <div class="col-lg-1 col-md-1 col-sm-1 col-xs-1">
+      <span>Filtros:</span>
+    </div>
+    <div class="col-lg-2 col-md-2 col-sm-2 col-xs-12">
+      <select class="form-control" name="combo_method" id="combo_method" data-graduation="<%=@graduation_group.id%>">
+        <% @method_teachings.each do |method_teaching| %>
+          <option value="<%= method_teaching.id %>"><%= method_teaching.name %></option>
+        <% end %>
+      </select>
+    </div>
+    <div class="col-lg-2 col-md-2 col-sm-2 col-xs-12">
+      <select class="form-control" name="uf" id="combo_uf" data-graduation="<%=@graduation_group.id%>">
+        <option value="0">Estado:</option>
+        <% @ufs.each do |uf| %>
+          <option value="<%= uf.id %>"><%= uf.name %></option>
+        <% end %>
+      </select>
+    </div>
+    <div class="col-lg-2 col-md-2 col-sm-2 col-xs-12">
+      <select class="form-control" name="city" id="combo_city" data-graduation="<%=@graduation_group.id%>"> 
+        <option value="0">Selecione um estado</option>
+        <%- if params[:city].present? %>
+          <% @cities.each do |city| %>
+            <option value="<%= city.id %>"><%= city.name %></option>
+          <% end %>
+        <% end %>
+      </select>
+    </div>
+  </div>
+</div>
+<!-- End Filter -->
+
+
+<!-- List IES -->
+<div class="institution-graduation">
+  <div class="row">
+    <div class="col-lg-12">
+
+      <div class="ies-graduation-area">
+        <%= render partial: "site/institutions/shared/institution_thumb" %>
+      </div>
+
+    </div>
+  </div>
+</div>
+

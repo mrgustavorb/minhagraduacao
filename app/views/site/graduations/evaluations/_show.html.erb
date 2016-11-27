@@ -1,0 +1,15 @@
+<!-- Graduations Evaluations -->
+<div class="evaluation-graduation">
+
+  <%- if @evaluations_avarege[:total] == 0 -%>
+    
+    <%= render 'site/graduations/evaluations/no_evaluations' %>
+
+  <% else %>
+    
+    <%= render 'site/graduations/evaluations/load_evaluations' %>
+
+  <% end %>
+
+</div>
+<!-- Graduations Evaluations -->

@@ -1,0 +1,44 @@
+<div class="header-2">
+  <!-- Container -->
+  <div class="container container-xs-height">
+    <div class="row row-xs-height">
+      
+      <!-- Logo section -->
+      <div class="col-md-6 col-xs-height col-middle">
+        <div class="logo">
+          <div class="btn-wrap pull-left" style="top: -4px;"><%= link_to image_tag("logohome.png"), root_path, class: "center-block btn-wrap" %></div>
+        </div>
+      </div>
+      <!-- End Logo section -->
+
+      <!-- Menu -->
+      <div class="col-md-6 col-xs-height col-middle"> 
+        <%= render 'layouts/site/home_settings/home_navbar' %>
+      </div>
+      <!-- End Menu -->
+    </div>
+  </div>
+</div>
+
+<!-- Search form -->
+<div class="col-md-12">
+  <div class=" btn-wrap col-centered define-title">
+    <strong>O curso ideal está aqui<br /></strong>
+  </div>
+  <div class="btn-wrap define-subtitle ">  
+    <strong>Quer cuidar do mundo? Comece cuidando de você</strong>
+  </div>  
+  <form id="search-form" method="get" action="<%= search_path %>" class="form-search-internal" role="form">
+    <div class="col-md-7">
+      <div class="input-group input-group-lg btn-wrap font-search" style="top:240px; left:280px;">
+        <input class="typeahead tt-query form-control input-lg control-label input-search-graduation" type="text" placeholder="Qual graduação você está pensando em fazer?" autocomplete="on" spellcheck="true" dir="auto" name="q"/>
+        <span class="input-group-btn">
+          <button class="btn btn-lg btn-lblue font-navbar" type="submit">que tal?!</button>
+        </span>
+      </div>
+    </div>  
+  </form>
+</div>
+<!-- End Search form -->
+
+<!-- class="typeahead font-navbar tt-query form-control input-lg control-label input-search-graduation" type="text" placeholder="Qual graduação você está pensando em fazer?" autocomplete="on" spellcheck="true" dir="auto"  -->

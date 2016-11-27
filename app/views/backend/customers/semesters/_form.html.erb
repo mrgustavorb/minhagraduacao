@@ -1,0 +1,53 @@
+<table class="table table-bordered table-disciplines">
+  <thead>
+    <th class="col-sm-2"></th>
+    <th>Nome</th>
+  </thead>
+  <tbody>
+    <% if @semester.disciplines.count > 0 %>
+      <% @semester.disciplines.each do |discipline| %>
+        <tr class="line_disciplines">
+          <td>
+            <button class="btn btn-danger btn-trash-discilines" type="button"><i class="fa fa-trash-o"></i></button>
+            <button class="btn btn-info btn-add-discilines" type="button"><i class="fa fa-plus-square-o"></i></button>
+          </td>
+          <td><input name="disciplines[name][]" class="form-control" value="<%=discipline.name%>" type="text"></td>
+        </tr>
+      <% end %>
+    <% else %>
+      <tr class="line_disciplines">
+        <td>
+          <button class="btn btn-danger btn-trash-discilines" type="button"><i class="fa fa-trash-o"></i></button>
+          <button class="btn btn-info btn-add-discilines" type="button"><i class="fa fa-plus-square-o"></i></button>
+        </td>
+        <td><input name="disciplines[name][]" class="form-control" value="" type="text"></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+<div class="form-group">
+  <div class="col-md-7">
+    <button class="btn btn-primary" type="submit"><i class="fa fa-floppy-o"></i> Gravar</button>
+  </div>
+</div>
+
+<script>
+  if($(".table-disciplines").length > 0) {
+    rebuild_table()
+  }
+
+  $(".btn-trash-discilines,.btn-add-discilines").on('click', function () {
+      if($(this).hasClass('btn-add-discilines')) {
+        var clone = $('.line_disciplines:last').clone(true).find("input").val("").end()
+        $('.line_disciplines:last').after(clone);
+      } else if($(this).hasClass('btn-trash-discilines')) {
+        $(this).parents('tr').remove(); 
+      }
+      rebuild_table()
+  }); 
+
+  function rebuild_table() {
+    ($('.table-disciplines').find('.btn-trash-discilines').length > 1) ?  $('.table-disciplines').find('.btn-trash-discilines').show() :  $('.table-disciplines').find('.btn-trash-discilines').hide()
+    $('.table-disciplines').find('.btn-add-discilines').hide().filter(':last').show(); 
+  }
+</script>

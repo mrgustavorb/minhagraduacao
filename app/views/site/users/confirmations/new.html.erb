@@ -1,0 +1,13 @@
+<%- @title_box_login = 'Instruções de confirmação' -%>
+
+<%= form_for(resource, :as => resource_name, :url => confirmation_path(resource_name), :html => { :method => :post }) do |f| %>
+  
+  <%= devise_error_messages! %>
+  
+  <div>
+    <%= f.email_field :email, :autofocus => true, :class => 'form-control input-lg', placeholder: 'e-mail' %>
+    <br/>
+    <button type="submit" class="btn btn-primary btn-lg btn-block btn-large-purple">Reenviar instruções</button>
+  </div>
+  
+<% end %>

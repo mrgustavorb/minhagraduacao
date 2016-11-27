@@ -1,0 +1,50 @@
+<%= list_error_model @institution %>
+
+<div class="row">
+  <div class="col-md-12">
+    <!--tab nav start-->
+    <section class="panel">
+      <header class="panel-heading tab-bg-dark-navy-blue">
+        <ul class="nav nav-tabs">
+          <li class="<%= action_name == 'edit' ? 'active' : '' %>">
+            <a href="<%= edit_customers_institution_path(@institution.id) %>">
+              <i class="fa fa-info"></i> Informações
+            </a>
+          </li>
+          <li class="<%= action_name == 'graduations' ? 'active' : '' %>">
+            <a href="<%= graduations_customers_institution_path %>">
+              <i class="fa fa-info"></i> Graduações
+            </a>
+          </li>
+          <li>
+            <a data-toggle="tab" href="#photos">
+              <i class="fa fa-info"></i> Fotos
+            </a>
+          </li>
+          <li>
+            <a data-toggle="tab" href="#social">
+              <i class="fa fa-info"></i> Redes Sociais
+            </a>
+          </li>
+          <li>
+            <a data-toggle="tab" href="#contacts">
+              <i class="fa fa-info"></i> Contatos
+            </a>
+          </li>
+        </ul>
+      </header>
+      <div class="panel-body">
+        <div class="tab-content">
+          <div class="tab-pane active">
+            <%= render "backend/customers/institutions/shared/informations" if action_name == 'edit' %>
+            <%= render "backend/customers/institutions/shared/graduations" if action_name == 'graduations' %>
+            <%= render "backend/customers/institutions/shared/photos_upload" if action_name == 'photos_upload' %>
+            <%= render "backend/customers/institutions/shared/social_network" if action_name == 'social_network' %>
+            <%= render "backend/customers/institutions/shared/contact" if action_name == 'contact' %>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!--tab nav end-->
+  </div>
+</div>

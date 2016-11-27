@@ -1,0 +1,41 @@
+<div class="block-heading-two text-center">
+  <h3><span>Opiniões Recentes</span></h3>
+</div>
+
+<div class="h-timeline-row">
+  <div class="row">
+
+    <% @evaluations_graduations.each_with_index do |evaluation, index| %>
+        <div class="col-md-4">
+          <!-- time line content entry -->
+          <div class="entry br-<%= color_opnions(index.to_i) %> br-size-2">
+            <!-- Time line entry content -->
+            <div class="entry-content">
+              <!-- Time line entry meta -->
+              <div class="meta">
+                <i class="fa fa-calendar orange"></i>&nbsp; <%= evaluation.created_at.to_date.to_s_br %>
+              </div>
+
+              <h4 class="text-center"><%= evaluation.graduation_group.name if evaluation.graduation_group %></h4>
+              <h6 class="text-center"><%= evaluation.user.user_profile.scholarity == 2 ? "Universitário" : "Profissional" %></h6>
+
+              <div class="img-box-7-item">
+                <ul class="list-unstyled">
+                  <li>Facilidade do curso.<span class="pull-right"><span class="badge badge-<%= color_opnions(index.to_i) %>"><strong>Nota: <%= evaluation.graduation_difficulty %></strong></span></span></li>
+                  <li>Reconhecimento pela sociedade.<span class="pull-right"><span class="badge badge-<%= color_opnions(index.to_i) %>"><strong>Nota: <%= evaluation.social_recognition %></strong></span></span></li>
+                  <li>Possibilidade de atuar em várias áreas.<span class="pull-right"><span class="badge badge-<%= color_opnions(index.to_i) %>"><strong>Nota: <%= evaluation.job_most_areas %></strong></span></span></li>
+                  <li>Facilidade de conseguir o primeiro emprego.<span class="pull-right"><span class="badge badge-<%= color_opnions(index.to_i) %>"><strong>Nota: <%= evaluation.first_job %></strong></span></span></li>
+                </ul>
+              </div> 
+                
+               <div class="text-center"><a href="<%= graduation_evaluations_path(evaluation.graduation_group.url_friendly) if evaluation.graduation_group %>">Avaliação Completa</a></div>
+
+            </div>
+            <!-- Icon -->
+            <%= image_tag evaluation.user.user_profile.scholarity == 2 ? "icon_academic.png" : "icon_professional.png", class: "entry-icon" %>
+          </div>
+        </div>
+     <% end %>
+
+  </div>
+</div>

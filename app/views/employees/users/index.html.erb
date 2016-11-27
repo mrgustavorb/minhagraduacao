@@ -1,0 +1,36 @@
+<div class="row">
+  <div class="col-sm-12">
+    <section class="panel">
+      <header class="panel-heading">
+        <%= link_to new_employees_school_path, class: "btn btn-primary btm-sm" do %> <strong>Cadastrar</strong> <% end %>
+      </header>
+      <div class="panel-body">
+
+        <%= grid(@users) do |u|
+          
+          u.column name: 'ID', attribute: 'id' do |user|
+            user.id
+          end 
+
+          # u.column name: 'Nome', attribute: 'name' do |user|
+          #    user.user_profile.name
+          # end 
+            
+          u.column name: 'Email', attribute: 'email' do |user| 
+            user.email
+          end 
+
+          # u.column name: 'Escolaridade', attribute: 'scholarity' do |nome|
+
+          # end
+
+          u.column name: 'Respondeu o questionário', attribute: 'answered' do |user|
+            user.answered ? "Sim" : "Não"
+          end
+
+        end-%>
+
+      </div>
+    </section>
+  </div>
+</div>         

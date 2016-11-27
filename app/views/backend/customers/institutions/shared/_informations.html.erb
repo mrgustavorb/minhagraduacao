@@ -1,0 +1,120 @@
+<%= simple_form_for([:customers, @institution], :url => { :action => "update" }, multipart: true, :html => {:class => "form-horizontal"}) do |f| %>
+  
+  <div class="form-group last">
+    <label class="control-label col-md-3">Marca da Instituição</label>
+    <div class="col-md-9">
+      <div class="fileupload fileupload-new" data-provides="fileupload">
+        <div class="fileupload-new thumbnail" style="width: 200px; height: 150px;">
+          <%- if @institution.institution_profile then -%>
+
+            <%- unless @institution.institution_profile.avatar_file_name.nil? %>
+              <%= image_tag @institution.institution_profile.avatar.url(:medium) %>
+            <% else %>
+              <img src="http://www.placehold.it/200x150/EFEFEF/AAAAAA&amp;text=sem+imagem" alt="" />
+            <% end %>
+                                     
+          <%- else -%>
+            <img src="http://www.placehold.it/200x150/EFEFEF/AAAAAA&amp;text=no+image" alt="" />
+          <%- end -%>
+        </div>
+
+        <div class="fileupload-preview fileupload-exists thumbnail" style="max-width: 200px; max-height: 150px; line-height: 20px;"></div>
+       
+        <div>
+          <span class="btn btn-white btn-file">
+          <span class="fileupload-new"><i class="fa fa-paper-clip"></i> Selecionar uma imagem</span>
+          <span class="fileupload-exists"><i class="fa fa-undo"></i> Mudar</span>
+          <%= f.fields_for :institution_profile, @institution.institution_profile do |institution_profile| %>
+            <%= institution_profile.file_field :avatar %>
+          <% end %>
+          </span>
+          <a href="#" class="btn btn-danger fileupload-exists" data-dismiss="fileupload"><i class="fa fa-trash"></i> Remover</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="form-group">        
+    <%= f.label :name, 'Nome', class: 'control-label col-md-3' %>
+    <div class="col-md-9">
+      <%= f.input :name, label: false, input_html: { class: 'form-control' } %>
+    </div>    
+  </div> 
+
+  <div class="form-group">        
+    <%= f.label :sigla, 'Sigla', class: 'control-label col-md-3' %>
+    <div class="col-md-3">
+      <%= f.input :sigla, label: false, input_html: { class: 'form-control' } %>
+    </div>    
+  </div> 
+ 
+  <%= f.simple_fields_for :institution_profile do |ip| -%>
+    <div class="form-group">        
+      <%= ip.label :igc, 'IGC', class: 'control-label col-md-3' %>
+      <div class="col-md-3">
+        <%= ip.input :igc, as: :integer, label: false, input_html: { class: 'form-control' } %>
+      </div>    
+    </div> 
+
+    <div class="form-group">
+      <%= ip.label :accepts_fies, 'FIES?', class: 'control-label col-md-3' %>
+      <div class="col-md-3">
+        <label class="radio-inline">
+          <%= ip.radio_button :accepts_fies, 'true', :checked => @institution.institution_profile.accepts_fies %><span>Sim</span>
+        </label>
+        <label class="radio-inline">
+          <%= ip.radio_button :accepts_fies, 'false', :checked => !@institution.institution_profile.accepts_fies %><span>Não</span>
+        </label>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <%= ip.label :accepts_prouni, 'PROUNI?', class:"control-label col-md-3" %>
+      <div class="col-md-3">
+        <label class="radio-inline">
+          <%= ip.radio_button :accepts_prouni, 'true', :checked => @institution.institution_profile.accepts_prouni %><span>Sim</span>
+        </label>
+        <label class="radio-inline">
+          <%= ip.radio_button :accepts_prouni, 'false', :checked => !@institution.institution_profile.accepts_prouni %><span>Não</span>
+        </label>
+      </div>
+    </div>
+
+    <div class="form-group">        
+      <%= ip.label :total_professors_phd, 'Prof. Doutores', class: 'control-label col-md-3' %>
+      <div class="col-md-3">
+        <%= ip.input :total_professors_phd, as: :integer, label: false, input_html: { class: 'form-control' } %>
+      </div>    
+    </div> 
+    
+    <div class="form-group">        
+      <%= ip.label :total_professors_master, 'Prof. Mestres', class: 'control-label col-md-3' %>
+      <div class="col-md-3">
+        <%= ip.input :total_professors_master, as: :integer, label: false, input_html: { class: 'form-control' } %>
+      </div>    
+    </div> 
+    
+    <div class="form-group">        
+      <%= ip.label :total_professors_graduatos, 'Prof. Graduados', class: 'control-label col-md-3' %>
+      <div class="col-md-3">
+        <%= ip.input :total_professors_graduatos, as: :integer, label: false, input_html: { class: 'form-control' } %>
+      </div>    
+    </div> 
+<!-- 
+    <div class="form-group">        
+      <%= ip.label :video_link, 'Video Institucional', class: 'control-label col-md-3' %>
+      <div class="col-md-9">
+        <%= ip.input :video_link, label: false, input_html: { class: 'form-control' } %>
+      </div>    
+    </div>  -->
+
+  <% end %>
+
+  <div class="form-group">
+    <label class="control-label col-md-3"></label>
+    <div class="col-md-7">
+      <%= f.button :submit, 'Salvar', class: 'btn btn-primary' %>
+    </div>
+  </div>
+
+<%- end -%>

@@ -1,0 +1,66 @@
+<div class="row">
+  <div class="col-lg-4">
+    <div class="logo">
+      <img class="img-responsive" src="<%= @institution.institution_profile.avatar_url %>" alt="<%=@institution.name%>">
+    </div>
+  </div>
+  <div class="col-lg-8">
+    <div class="row">
+
+      <% unless @institution.institution_profile.igc == 0 %> 
+        <div class="col-lg-4">
+          <blockquote>
+            <p>Avaliação do Mec (IGC)</p>
+            <footer><%= @institution.institution_profile.igc %></footer>
+          </blockquote>
+        </div>
+      <% end %>
+
+      <% unless @institution.institution_profile.accepts_fies.nil? %> 
+        <div class="col-lg-4">
+          <blockquote>
+            <p>FIES?</p>
+            <footer><%= @institution.institution_profile.accepts_fies ? 'Sim' : 'Não' %></footer>
+          </blockquote>
+        </div>
+      <% end %>
+
+      <% unless @institution.institution_profile.accepts_prouni.nil? %>
+        <div class="col-lg-4">
+          <blockquote>
+            <p>PROUNI?</p>
+            <footer><%= @institution.institution_profile.accepts_prouni ? 'Sim' : 'Não' %></footer>
+          </blockquote>
+        </div> 
+      <% end %>
+      
+      <% unless @institution.institution_profile.total_professors_phd == 0 %>
+        <div class="col-lg-4">
+          <blockquote>
+            <p>Prof. Doutores</p>
+            <footer><%= @institution.institution_profile.total_professors_phd %></footer>
+          </blockquote>
+        </div>
+      <% end %>
+      
+      <% unless @institution.institution_profile.total_professors_master == 0 %>
+        <div class="col-lg-4">
+          <blockquote>
+            <p>Prof. Mestres</p>
+            <footer><%= @institution.institution_profile.total_professors_master %></footer>
+          </blockquote>
+        </div>
+      <% end %>
+      
+      <% unless @institution.institution_profile.total_professors_graduatos == 0 %>
+        <div class="col-lg-4">
+          <blockquote>
+            <p>Prof. Graduados</p>
+            <footer><%= @institution.institution_profile.total_professors_graduatos %></footer>
+          </blockquote>
+        </div>
+      <% end %>
+
+    </div>
+  </div>
+</div>

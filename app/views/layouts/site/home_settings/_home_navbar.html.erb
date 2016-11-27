@@ -1,0 +1,29 @@
+<div class="navigation pull-right">      
+ <div id="mgmenu" class="mgmenu_container">
+    <ul class="mgmenu">
+
+    <!-- Responsive toggle button -->
+    <li class="mgmenu_button">Menu</li> 
+
+    <!-- Navigation links -->
+    <li class="font-navbar"><%= link_to 'graduações', graduations_path %></li>
+      <%- if user_signed_in? -%>
+        <li><a href="#"><%= current_user.email %> <i class="fa fa-angle-down"></i></a>
+        <!-- Dropdown menu -->
+        <div class="dropdown_container dropdown_2columns">
+          <!-- Multi level dropdown menu -->
+          <ul class="dropdown_flyout">
+            <li class="font-navbar"><%= link_to 'Meu Perfil', profile_path %></li>
+            <li class="font-navbar"><%= link_to 'Minha Conta', edit_user_registration_path(current_user) %></li>
+            <li class="divider"></li>
+            <li class="font-navbar"><%= link_to 'Sair', destroy_user_session_path %></li>
+          </ul>
+        </div>
+        </li>
+      <%- else -%>
+        <li><%= link_to 'entrar', new_user_session_path  %></li>
+        <li class=""><button class="btn btn-purple" style="top: 8px;"><%= link_to 'Sou Universidade' %></button></li>
+      <% end %>
+    </ul>
+ </div>
+</div>

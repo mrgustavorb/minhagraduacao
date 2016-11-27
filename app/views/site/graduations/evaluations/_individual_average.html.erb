@@ -1,0 +1,129 @@
+<% @evaluations.each do |evaluation| %>
+
+  <div class="evaluation">
+
+    <div class="row">
+      <div class="col-lg-12 text-center">
+        <div><%= image_tag evaluation.user.user_profile.scholarity == 2 ? "icon_academic.png" : "icon_professional.png" %></div>
+        <div><strong><%= evaluation.user.user_profile.scholarity == 2 ? "Universitário" : "Profissional" %></strong></div>
+
+        <% if evaluation.user.user_profile.scholarity == 2 %>
+          <div><%= evaluation.user.user_profile.semester %>º Semestre</div>
+        <%else%>
+          <div><%= evaluation.user.user_profile.job_title %></div> 
+          <div><%= evaluation.user.user_profile.city %></div>
+        <% end%>
+      </div>
+    </div>
+
+    <div style="margin: 20px;"></div>
+
+    <div class="triangle-border top">
+      <div class="row">
+
+        <div class="col-lg-4 col-md-5 col-sm-6 col-xs-12">
+          <div class="row divider-4">
+            <div class="col-lg-9 col-md-10 col-sm-11 col-xs-11"> Facilidade do curso:</div>
+            <span class="badge badge-orange col-md-3"><strong>Nota: <%= evaluation.graduation_difficulty %></strong></span>
+          </div>
+
+          <div class="row divider-4">
+            <div class="col-lg-9 col-md-10 col-sm-10 col-xs-11"> Reconhecimento pela sociedade:</div>
+            <span class="badge badge-orange col-md-3"><strong>Nota: <%= evaluation.social_recognition %></strong></span>
+          </div>
+
+          <div class="row divider-4">
+            <div class="col-lg-9 col-md-10 col-sm-11 col-xs-11"> Possibilidade de atuar em várias áreas:</div>
+            <span class="badge badge-orange col-md-3"><strong>Nota: <%= evaluation.job_most_areas %></strong></span>
+          </div>
+
+          <div class="row divider-4">
+            <div class="col-lg-9 col-md-10 col-sm-11 col-xs-11"> Oportunidade de concurso público:</div>
+            <span class="badge badge-orange col-md-3"><strong>Nota: <%= evaluation.tendering %></strong></span>
+          </div>
+
+          <div class="row visible-sm visible-xs divider-4">
+            <div class="col-sm-11 col-xs-11"> Estágios renumerados: </div>
+            <span class="badge badge-orange col-md-3"><strong>Nota: <%= evaluation.renumbered_training %></strong></span>
+          </div>
+
+          <div class="row visible-sm visible-xs divider-4">
+            <div class="col-sm-11 col-xs-11"> Conseguir o primeiro emprego: </div>
+            <span class="badge badge-orange col-md-3"><strong>Nota: <%= evaluation.first_job %></strong></span>
+          </div>
+          
+          <% if evaluation.user.user_profile.scholarity == 3 %>
+            <div class="row visible-sm visible-xs divider-4">
+              <div class="col-sm-11 col-xs-11"> Nível dos profissionais:</div>
+              <span class="badge badge-orange col-md-3"><strong>Nota: <%= evaluation.graduation_professional %></strong></span>
+            </div>
+         <% end %>
+        </div> 
+
+        <div class="col-lg-4 col-md-4 col-sm-6 hidden-sm hidden-xs">
+          <div class="row divider-4">
+            <div class="col-lg-9 col-md-10 col-sm-9"> Estágios renumerados:</div>
+            <span class="badge badge-orange col-md-3"><strong>Nota: <%= evaluation.renumbered_training %></strong></span>
+          </div>
+
+          <div class="row divider-4">
+            <div class="col-lg-9 col-md-10 col-sm-9"> Conseguir o primeiro emprego:</div>
+            <span class="badge badge-orange col-md-3"><strong>Nota: <%= evaluation.first_job %></strong></span>
+          </div>
+
+          <div class="row divider-4">
+            <div class="col-lg-9 col-md-10 col-sm-9"> Recomendação do curso:</div>
+            <span class="badge badge-orange col-md-3"><strong>Nota: <%= evaluation.recommendation %></strong></span>
+          </div>
+        
+          <% if evaluation.user.user_profile.scholarity == 3 %>
+            <div class="row divider-4">
+              <div class="col-lg-9 col-md-10 col-sm-9"> Nível dos profissionais:</div>
+              <span class="badge badge-orange col-md-3"><strong>Nota: <%= evaluation.graduation_professional %></strong></span>
+            </div>
+          <% end %> 
+        </div> 
+
+        <% if (signed_in? && current_user.answered) %>
+
+          <%  
+            starting_salary     = @evaluations_avarege[:starting_salary].to_i > 0 ? (@evaluations_avarege[:starting_salary]/@evaluations_avarege[:total_professional]).to_i : 0
+            professional_salary = @evaluations_avarege[:professional_salary].to_i > 0 ? (@evaluations_avarege[:professional_salary]/@evaluations_avarege[:total_professional]).to_i : 0
+            starting_salary     = what_salary?(starting_salary)
+            professional_salary = what_salary?(professional_salary, true)
+          %> 
+
+          <div class="col-lg-4 col-md-3 col-sm-6 col-xs-12">
+            <% if (signed_in? && current_user.answered && evaluation.user.user_profile.scholarity == 3) %>
+                <div class="row">
+                  <div class="col-lg-7 col-md-11 col-sm-6 col-xs-6"> Salário Inicial:</div>
+                  <div class="col-xs-11 hidden-xs"><strong><%= starting_salary %></strong></div>
+                  <div class="col-xs-11 visible-xs"><strong><%= starting_salary %></strong></div>
+                </div>
+
+                <div class="col-lg-7 col-md-11 col-sm-6 col-xs-6"> Salário Mercado:</div>
+                  <div class="col-xs-11 hidden-xs"><strong><%= professional_salary %></strong></div>
+                  <div class="col-xs-11 visible-xs"><strong><%= professional_salary %></strong>   
+                </div>
+
+            <% end %>
+
+            <% else %>
+              <div class="col-lg-4 col-md-3 col-sm-6 text-center how-much">
+                <div style="margin: 54px;">
+                <a class="btn btn-primary btn-large-purple btn-lg" href="/users/sign_in" role="button">Quanto Ganha?</a></div>
+              </div>   
+            <% end %>
+          </div>
+      </div>
+      
+      <div style="margin: 20px;"></div>
+      
+      <div class="row">
+        <div class="col-lg-6"><blockquote><h4>Prós</h4><p style="text-align:justify; font-size: 15px;"><%= evaluation.advantage %></p></blockquote></div>
+        <div class="col-lg-6"><blockquote><h4>Contras</h4><p style="text-align:justify; font-size: 15px;"><%= evaluation.disadvantage %></p></blockquote></div>
+      </div>
+    </div>  
+  </div>  
+
+<% end %>

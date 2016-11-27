@@ -1,0 +1,85 @@
+<div class="login-reg">
+  <!-- Login Form -->
+  <div class="login-reg-form">
+    <%= link_to image_tag("LogoTopoLogin.png", class: "center-block img-responsive"), root_path %>
+      <!-- Heading -->
+      <br />
+      <h4>Criar uma nova conta</h4>
+      <br />
+      <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { id: 'form-toggle-2', class: 'form-toggle form-horizontal', role: 'form' }) do |f| %>
+        <%= devise_error_messages! %>
+        <div id="login-error" class="alert alert-danger hidden"></div>
+        
+          <div class="form-group">
+            <div class="col-xs-12">
+              <!-- Input -->
+              <%= f.email_field :email, :autofocus => true, :placeholder => "E-mail", class: 'form-control input-lg' %>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <div class="col-xs-12">
+              <!-- Input -->
+              <%= f.password_field :password, :autofocus => true, :placeholder => "Senha", class: 'form-control input-lg' %>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <div class="col-xs-12">
+              <%= f.password_field :password_confirmation, :placeholder => "Digite a sua senha novamente", class: 'form-control input-lg' %>
+            </div>
+          </div>
+
+          <select class='form-control input-lg' name="user[user_profile_attributes][scholarity]">
+            <option value="">Qual sua escolaridade?</option>
+            <option value="1">Estou na escola</option>
+            <option value="2">Estou na univeridade</option>
+            <option value="3">Já sou um profissional formado</option>
+          </select>
+
+          <br />
+        
+          <div class="use-term">
+            <label>
+              <input id="agree-use-term" type="checkbox"/>
+              Eu li e aceito o
+              <%= link_to 'Termo de Uso', term_of_use_path, target: '_blank' %>.
+            </label>
+          </div>
+        
+          <br />
+
+          <div class="form-group">
+            <div class="col-xs-12">
+              <!-- Button -->
+              <button type="submit" class="btn btn-primary btn-lg btn-block btn-green">Cadastrar</button>&nbsp;
+            </div>
+          </div>      
+    <% end %>
+  </div>
+</div>
+
+<script>
+
+  function login_message(message, success) {
+    $('#login-error,#login-success').addClass('hidden');
+    if (success) {
+      $('#login-success').text(message).removeClass('hidden');
+    } else {
+     
+    }
+  }
+
+  $('#form-toggle-2').submit(function(evt){
+
+    if (! $('#agree-use-term')[0].checked) {
+       $('#login-error').text('Você precisa concordar com o termo de uso.').removeClass('hidden');
+      $('#agree-use-term').focus();
+      return false;
+    }
+
+    return true;
+  });
+
+</script>
+

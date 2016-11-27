@@ -1,0 +1,14 @@
+<%= form_for(resource, :as => resource_name, :url => password_path(resource_name), :html => { :method => :post, :class => 'form-signin'}) do |f| %>
+  <h2 class="form-signin-heading"><%= image_tag 'logo.png' %></h2>
+  <div class="login-wrap">
+    <div class="user-login-info">
+      <%= devise_error_messages! %>
+      <%= f.email_field :email, :placeholder => "Digite seu e-mail, para recuperar sua senha.", class: "form-control placeholder-no-fix" %> 
+    </div>
+    <button class="btn btn-lg btn-login btn-block" type="submit">Enviar nova senha</button>
+
+    <div class="registration">
+      minhagraduacao.com © 2014
+    </div>
+  </div>
+<% end %>

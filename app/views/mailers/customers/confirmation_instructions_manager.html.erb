@@ -1,0 +1,15 @@
+<%= render "mailers/shared/head" %>
+
+    <div style="color:#008ECF; font-size:26px; text-align:left;"><strong><%= @user.profile.name %>,</strong></div>
+    <br /><br />
+    <div style="font-family:sans-serif; font-size:14px; line-height:18px; text-align: justify;">Seja bem vindo ao minhagraduação.</div>
+    <br />
+    <div style="text-align:left;">Após confirmar seu cadastro no link abaixo, sinta-se à vontade para explorar a nossa plataforma.</div>
+    <br /><br /><br /><br />
+    <center><%= link_to 'Confirmar minha conta', confirmation_url(@user, :confirmation_token => @token), {:style=>'font-size: 22px; color: white; background-color: #008ECF; border-color: #008ECF; padding: 16px 22px; line-height: 1.33; border-radius: 6px;'} %></center>
+    <br /><br /><br /><br />
+    <div style="text-align:left;">Obrigado!.</div>
+    <br />
+    <div style="color:#999999; font-size:12px; font-style:italic; text-align:left;">Caso não tenha sido você que solicitou esta confirmação, favor desconsiderar.</div>
+
+<%= render "mailers/shared/footer" %>

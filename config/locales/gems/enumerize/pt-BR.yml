@@ -1,0 +1,9 @@
+pt-BR:
+  enumerize:
+    institution:
+      academic_organization_id:
+        universidade: "Universidade"
+        centro_universitario: "Centro Universitário"
+        faculdade: "Faculdade"
+        instituto_federal: "Instituto Federal"
+        centro_federal: "Centro Federal"

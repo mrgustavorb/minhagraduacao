@@ -1,0 +1,35 @@
+<div style="background-color:#f0f0f0; width:100%; text-align:center;">
+	<div style=" width:650px; margin:0 auto; text-align:left; padding:20px;">
+
+	    <div style="background-color:#0093cb; height:20px;"></div>
+
+	    <div style="background-color:#ffffff; text-align:center; padding:20px;"><img src="logo-minhagraduacao-2.png" width="200"></div>
+
+	    <div style="background-color:#cccccc; height:1px;"></div>
+
+	    <div style="background-color:#ffffff; padding:30px; font-family:Arial; font-size:14px; line-height:18px;">
+
+	    	<span style="color:#0093cb; font-size:21px;"><strong>Olá,</strong></span>
+	    	<br /><br />
+	        <span><%= @resource.email %></span>
+	        <br /><br />
+	        <span>Sua conta foi bloqueada devido há um excessivo número de tentativas de login sem sucesso.</span>
+	        <br /><br />
+			<span>Acesse o link abaixo para desbloquear sua conta:</span>
+			<br /><br />
+	        <strong><%= link_to 'Desbloquear minha conta', unlock_url(@resource, :unlock_token => @token) %></strong>
+	        <br /><br /><br />
+			<span>Saudações ninjas!</span>
+			<br /><br />
+	        <span style="color:#999999; font-size:12px; font-style:italic;">Caso não tenha sido você que solicitou esta confirmação, favor desconsiderar.</span>
+	        
+	    </div>
+
+	    <div style="background-color:#333333; height:65px;">
+	        <div style="float:right; text-align:right; padding:20px;">
+	        	<a href="https://www.facebook.com/pages/Minha-Gradua%C3%A7%C3%A3o/1449379048680016?fref=ts" target="_blank"><img src="http://www.minhagraduacao.com/imagens/socialfacebook.gif" width="25" /></a>
+			</div>
+		</div>
+
+	</div>
+</div>

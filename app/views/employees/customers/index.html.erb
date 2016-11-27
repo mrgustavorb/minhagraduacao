@@ -1,0 +1,33 @@
+<div class="row">
+  <div class="col-sm-12">
+    <section class="panel">
+      <header class="panel-heading">
+        <%= link_to new_employees_customer_path, class: "btn btn-primary btn-sm" do %> <strong>Cadastrar</strong> <% end %>
+      </header>
+      <div class="panel-body">
+       
+        <%= grid(@customers) do |c|
+
+          c.column name: 'ID', attribute: 'id' do |customer|
+            customer.id
+          end
+
+          c.column name: 'Nome', attribute: 'name', model: 'CustomerProfile' do |customer|
+            customer.profile.name
+          end
+
+          c.column   do |customer|
+            link_to edit_employees_customer_path(customer), class: 'table-actions' do 
+              "<i class='fa fa-bar-chart-o'></i>".html_safe
+            end
+            link_to edit_employees_customer_path(customer), class: 'table-actions' do 
+              "<i class='fa fa-pencil'></i>".html_safe
+            end
+          end
+
+        end -%>
+
+      </div>
+    </section>
+  </div>
+</div>

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <%= render 'layouts/site/shared/head' %>  
+  </head>
+  
+  <body>
+
+    <div id="fb-root"></div>
+
+    <!-- Outer Starts -->
+    <div class="outer">
+      
+      <%- if !['index'].include? params[:action] %>
+        <%= render 'layouts/site/page_settings/other_pages' %>
+      <%- else -%>
+        <%= render 'layouts/site/home_settings/page_index' %>
+      <%- end -%>
+        
+
+      <%- if !['index', 'choice_scholarity'].include? params[:action] %>
+        <div class="striper-content-views">
+          <div class="container">
+            <div class="p-element col-lg-10">
+              <h1><%= @page_internal_title %></h1>
+              <h3><%= @page_internal_subtitle %></h3>
+            </div>
+            <div class="p-element col-lg-2">
+              <h1><%= @page_internal_media = "Nota: #{(@evaluations_avarege[:recommendation]/@evaluations_avarege[:total])}" if action_name == 'evaluations' && !@evaluations_avarege[:recommendation].nil? %></h1>
+            </div>   
+          </div>
+        </div>  
+      <% end %>
+      
+      <div class="main-block">
+        <%= yield %>
+      </div>
+
+      
+      <!-- Footer -->
+      <%= render 'layouts/site/shared/footer' %>
+      <!-- End Footer -->
+    
+    </div>
+    <!-- End Outer -->
+
+  </body> 
+</html>

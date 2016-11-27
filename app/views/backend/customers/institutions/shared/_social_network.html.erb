@@ -1,0 +1,40 @@
+<%= form_for([:customers, @institution], multipart: true, :html => {:class => "form-horizontal"}) do |f| %>
+  <%= f.fields_for :institution_profile, @institution.institution_profile do |ip| %>
+    <div class="form-group">
+      <%= ip.label :url_facebook, 'Facebook', class:"control-label col-md-2" %>
+      <div class="col-md-7">
+        <%= ip.text_field :url_facebook, class:"form-control" %>
+      </div>
+    </div>                    
+    <div class="form-group">
+      <%= ip.label :url_twitter, 'Twitter', class:"control-label col-md-2" %>
+      <div class="col-md-7">
+        <%= ip.text_field :url_twitter, class:"form-control" %>
+      </div>
+    </div>                    
+    <div class="form-group">
+      <%= ip.label :url_youtube, 'Youtube', class:"control-label col-md-2" %>
+      <div class="col-md-7">
+        <%= ip.text_field :url_youtube, class:"form-control" %>
+      </div>
+    </div>                    
+    <div class="form-group">
+      <%= ip.label :url_instagram, 'Instagram', class:"control-label col-md-2" %>
+      <div class="col-md-7">
+        <%= ip.text_field :url_instagram, class:"form-control" %>
+      </div>
+    </div>                    
+    <div class="form-group">
+      <%= ip.label :url_google_plus, 'Google Plus', class:"control-label col-md-2" %>
+      <div class="col-md-7">
+        <%= ip.text_field :url_google_plus, class:"form-control" %>
+      </div>
+    </div>                                         
+    <div class="form-group">
+      <label class="control-label col-md-2"></label>
+      <div class="col-md-7">
+        <button class="btn btn-primary" type="submit">Gravar</button>
+      </div>
+    </div>
+  <%- end -%>
+<%- end -%>

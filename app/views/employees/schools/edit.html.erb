@@ -1,0 +1,28 @@
+<%= list_error_model @school %>
+
+<div class="row">
+  <div class="col-md-12">
+    <!--tab nav start-->
+    <section class="panel">
+      <header class="panel-heading tab-bg-dark-navy-blue">
+        <ul class="nav nav-tabs">
+          <li class="active">
+            <a data-toggle="tab" href="#informations">
+              <i class="fa fa-info"></i> Informações
+            </a>
+          </li>
+        </ul>
+      </header>
+      <div class="panel-body">
+        <div class="tab-content">
+          <div id="informations" class="tab-pane active">
+            <%= simple_form_for([:employees, @school], :url => { :action => "update" }, multipart: true, :html => {:class => "form-horizontal"}) do |f| %>
+              <%= render "employees/school/shared/informations", f: f %>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!--tab nav end-->
+  </div>
+</div>

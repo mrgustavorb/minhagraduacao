@@ -1,0 +1,47 @@
+<%- @page_internal_title = 'Contato' -%>
+
+<% title @page_internal_title %>
+<% keywords 'contato,email,telefone,endereco' %>
+
+<!-- flash messages -->
+<%= render 'layouts/site/shared/flash_message' %>
+<!-- End flash messages -->
+
+<div id="contact">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+
+        <%= form_for @contact, url: '', html: {class: 'form-horizontal', role: 'form' } do |f| %>
+          <div class="form-group">
+            <%= f.label :name, 'Nome', class: 'col-md-2 control-label' %>
+            <div class="col-md-10">
+              <%= f.text_field :name, class: 'form-control' %>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <%= f.label :email, 'E-mail', class: 'col-md-2 control-label' %>
+            <div class="col-md-10">
+              <%= f.text_field :email, class: 'form-control' %>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <%= f.label :message, 'Mensagem', class: 'col-md-2 control-label' %>
+            <div class="col-md-10">
+              <%= f.text_area :message, class: 'form-control', :cols => 10, :rows => 10 %>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+              <%= f.submit 'Enviar', class: 'btn btn-primary btn-lg btn-block btn-large-purple' %>
+            </div>
+          </div>
+        <% end %>
+
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,36 @@
+<div class="row">
+  <div class="col-md-12">
+    <!--tab nav start-->
+    <section class="panel">
+      <header class="panel-heading tab-bg-dark-navy-blue">
+        <ul class="nav nav-tabs">
+          <li class="active">
+            <a data-toggle="tab" href="#informations">
+              <i class="fa fa-info"></i> Informações
+            </a>
+          </li>
+          <% unless @graduation_profile.id.nil? %>
+            <li>
+              <a data-toggle="tab" href="#semesters">
+                <i class="fa fa-info"></i> Semestres
+              </a>
+            </li>
+          <% end %>
+        </ul>
+      </header>
+      <div class="panel-body">
+        <div class="tab-content">
+          <div id="informations" class="tab-pane active">
+            <%= render "backend/customers/graduation_profiles/shared/informations" %>
+          </div>
+          <% unless @graduation_profile.id.nil? %>
+            <div id="semesters" class="tab-pane">
+              <%= render "backend/customers/graduation_profiles/shared/semesters" %>
+            </div>
+          <% end %>
+        </div>
+      </div>
+    </section>
+    <!--tab nav end-->
+  </div>
+</div>

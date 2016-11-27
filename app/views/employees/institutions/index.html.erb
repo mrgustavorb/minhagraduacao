@@ -1,0 +1,58 @@
+<div class="row">
+  <div class="col-sm-12">
+    <section class="panel">
+      <header class="panel-heading">
+        <%= link_to new_employees_institution_path, class: "btn btn-primary btn-sm" do %> <strong>Cadastrar</strong> <% end %>
+      </header>
+      <div class="panel-body">
+       
+        <%= grid(@institutions) do |i|
+
+          i.column name: 'ID', attribute: 'id' do |institution|
+            institution.id
+          end
+
+          i.column name: 'Sigla', attribute: 'sigla' do |institution|
+            institution.sigla
+          end
+
+          i.column name: 'Nome', attribute: 'name'  do |institution|
+            institution.name
+          end
+
+          i.column name: 'Quantidade de cursos', filter: false do |institution|
+            institution.graduations.count(1)
+          end
+
+          i.column name: 'Avaliações de Graduandos', filter: false do |institution|
+            institution.evaluation_institutions.academics.count(1)
+          end
+
+          i.column name: 'Avaliações de Profissionais', filter: false do |institution|
+            institution.evaluation_institutions.professionals.count(1)
+          end 
+
+          i.column name: 'Total de Avaliações', filter: false do |institution|
+            institution.evaluation_institutions.count(1)
+          end
+
+          # i.column name: 'Texto Sobre?', filter: false do |institutions|
+          #   "<span class='label label-#{graduation_group.description.blank? ? 'warning' : 'success'}'>#{graduation_group.description.nil? ? 'Não' : 'Sim'}</span>".html_safe
+          # end
+
+          # i.column   do |institution|
+          #   link_to edit_employees_institutions_path(institution), class: 'table-actions' do 
+          #     "<i class='fa fa-bar-chart-o'></i>".html_safe
+          #   end
+          #   link_to edit_employees_institutions_path(institution), class: 'table-actions' do 
+          #     "<i class='fa fa-pencil'></i>".html_safe
+          #   end
+          # end
+
+        end -%>
+
+
+      </div>
+    </section>
+  </div>
+</div>

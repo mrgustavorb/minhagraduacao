@@ -1,0 +1,27 @@
+.rating-c .br-widget {
+    height: 52px;
+}
+
+.rating-c .br-widget a {
+    display: block;
+    height: 35px;
+    float: left;
+    background-color: #e3e3e3;
+    margin: 2px;
+    text-decoration: none;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 2.2;
+    text-align: center;
+    color: #000;
+}
+
+.rating-c .br-widget a.br-active,
+.rating-c .br-widget a.br-selected {
+    background-color: #59a6d6;
+    color: white;
+}
+.rating-c .br-widget a.br-current {
+    background-color: #4179AD;
+    color: white;
+}

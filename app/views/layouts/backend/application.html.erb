@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Minha Graduação</title>
+  <%= render 'layouts/backend/shared/head' %>
+</head>
+<body>
+
+  <section id="container" >
+
+    <!--header start-->
+    <%= render 'layouts/backend/shared/header' %>
+    <!--header end-->
+
+    <!-- navigation -->
+    <%= render  "layouts/backend/shared/navigation_#{resource_name.to_s.gsub('_', '')}"  %>
+    <!-- navigation end -->
+
+    <!--main content start-->
+    <section id="main-content">
+      <section class="wrapper">
+
+      <!--breadcrumbs start -->
+      <div class="row">
+        <div class="col-md-12">
+          <ul class="breadcrumb">
+            <%= render_breadcrumbs :tag => :li, :separator => "" %>
+          </ul>
+        </div>
+      </div>
+      <!--breadcrumbs end -->
+            
+      <!-- page start-->
+      <%= render 'layouts/backend/shared/flash_message' %>
+      <%= yield %>
+      <!-- page end-->
+
+      </section>
+    </section>
+    <!--main content end-->
+
+    <!--sidebar right start-->
+    <%= render 'layouts/backend/shared/sidebar_right' %>
+    <!--sidebar right end-->
+
+  </section>
+  
+  <%= javascript_include_tag "backend/application" %>
+
+</body>
+</html>

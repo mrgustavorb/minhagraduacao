@@ -1,0 +1,50 @@
+<header class="header fixed-top clearfix">
+
+    <!--logo start-->
+    <div class="brand">
+      <a href="/" class="logo hidden-xs"> <%= image_tag 'backend/logo-md-white.png' %></a>
+      <span class="school-name-xs visible-xs"><h4><%#= current_user.profile.name if employee_signed_in? %></h4></span>
+      <div class="sidebar-toggle-box">
+        <div class="fa fa-bars"></div>
+      </div>
+    </div>
+    <!--logo end-->
+
+    <div class="top-nav clearfix">
+
+      <span class="school-name hidden-xs"><h4><%#= current_user.profile.name if employee_signed_in? %></h4></span>
+
+      <!--search & user info start-->
+      <ul class="nav pull-right top-menu">
+        <li></li>
+
+        <!-- user login dropdown start-->
+        <li class="dropdown" style="min-width: 120px; width: auto; height: auto;"> 
+        
+          <a data-toggle="dropdown" class="dropdown-toggle" href="#">
+            <%= image_tag 'backend/icons/icon-usuario-padrao-xs.png' %>
+            <span class="username"><%= get_current_user.profile.name %></span>
+            <b class="caret"></b>
+          </a>
+
+          <ul class="dropdown-menu extended logout">
+            <li>
+            <%= link_to build_path_to_user('edit') do %>
+                <i class=" fa fa-cog"></i>Minha Conta
+            <% end %>
+            </li>
+            <li>
+            <%= link_to build_path_to_user('destroy_session'), method: :delete do %>
+                <i class="fa fa-key"></i> Sair</a>
+            <% end %>
+            </li>
+          </ul>
+
+        </li>
+        <!-- user login dropdown end -->
+
+      </ul>
+      <!--search & user info end-->
+    </div>
+
+</header>

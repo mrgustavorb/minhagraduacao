@@ -1,0 +1,17 @@
+app_name = "ninjachoice"
+namespace :rails do
+  
+  desc "rails console" 
+  task :c do
+    on roles(:app) do |server|
+      server_index = ARGV[2].to_i
+
+      return if server != roles(:app)[server_index]
+
+      puts "Opening a console on: #{host}...."
+      
+      exec %Q(ssh -o TCPKeepAlive=yes #{server.user}@#{host} -p 5012 -t "bash --login -c 'cd #{fetch(:deploy_to)}/current && bundle exec rails console production'")
+    end
+  end
+
+end

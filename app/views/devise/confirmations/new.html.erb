@@ -1,0 +1,28 @@
+<head>
+  <%= render 'layouts/site/shared/head' %>
+</head>
+
+<body class="bg-img">
+  <div class="login-reg">
+    <div class="login-reg-form">
+      <%= link_to image_tag("LogoTopoLogin.png", class: "center-block img-responsive"), root_path %>
+
+      <br />
+      
+      <%= form_for resource, as: resource_name, url: confirmation_path(resource_name), :html => {method: :post, :class => 'form-signin'}, :id => 'activation-form' do |f| %>
+      <%= render 'layouts/site/shared/flash_message' %>
+
+        <div class="form-group">
+          <%= f.email_field :email, :autofocus => true, :placeholder => "Digite seu e-mail", class: 'form-control input-lg' %></p>
+        </div>
+
+        <div class="form-group">
+          <button class="btn btn-lg btn-login btn-block btn-green" type="submit">Reenviar confirmação</button>        
+        </div>
+      <% end %>
+    </div>  
+  </div>       
+    <div class="col-md-12 text-center copy" style="color: #fff">
+        Copyright © 2014 - Minha Graduação
+    </div>
+</body>

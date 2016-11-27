@@ -1,0 +1,35 @@
+<div style="background-color:#f0f0f0; width:100%; text-align:center;">
+	<div style=" width:650px; margin:0 auto; text-align:left; padding:20px;">
+
+	  <div style="background-color:#0093cb; height:20px;"></div>
+	    <div style="background-color:#ffffff; text-align:center; padding:20px;"><img src="http://minhagraduacao.dev/assets/logo-minhagraduacao-2.png" width="200"></div>
+	    <div style="background-color:#cccccc; height:1px;"></div>
+	    <div style="background-color:#ffffff; padding:30px; font-family:Arial; font-size:14px; line-height:18px;">
+
+	    	<span style="color:#0093cb; font-size:21px;"><strong>Olá,</strong></span>
+	    	<br /><br />
+	        <span><%= @email %></span>
+	        <br /><br />
+	        <span>Seja bem-vindo!</span>
+	        <br /><br />
+	        <div style="font-family:Arial; font-size:14px; line-height:18px; text-align: justify;">
+      			Nós somos uma rede colaborativa que abraçou o enorme desafio de ajudar pessoas a escolherem suas carreiras profissionais. Desde já agradecemos por sua disposição em participar. Acreditamos que este trabalho será uma boa oportunidade de formar profissionais mais realizados em suas respectivas atuações, consequentemente contribuindo para a construção de uma sociedade que reconhece e valoriza os mais diversos campos de trabalho.
+			    </div>
+      		<br />
+      		<span>Após confirmar seu cadastro no link abaixo, sinta-se à vontade para explorar o site, descobrir novas carreiras e deixar sua opinião.</span>
+      		<br /><br />
+              <strong><%= link_to 'Confirmar minha conta', confirmation_url(@user, confirmation_token: @token), {:style=>'color:#6fc7e9; text-decoration:none;'} %></strong> 
+              <br /><br /><br />
+      		<span>Saudações!</span>
+      		<br /><br />
+          <span style="color:#999999; font-size:12px; font-style:italic;">Caso não tenha sido você que solicitou esta confirmação, favor desconsiderar.</span>        
+	    </div>
+
+	    <div style="background-color:#333333; height:65px;">
+	      <div style="float:right; text-align:right; padding:20px;">
+	      	<a href="http://www.facebook.com/minhagraduacao" target="_blank"><img src="http://www.minhagraduacao.com/imagens/socialfacebook.gif" width="25" /></a>
+			  </div>
+		  </div>
+
+	</div>
+</div>

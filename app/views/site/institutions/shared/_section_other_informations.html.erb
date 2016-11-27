@@ -1,0 +1,82 @@
+<div class="title-section">   
+  <div class="row">
+    <div class="col-lg-12">
+      <h2>Outras Informações</h2>
+    </div>
+  </div>
+</div>
+
+<div class="row">
+
+  <% unless @institution.institution_profile.site.empty? %> 
+    <div class="col-lg-4">
+      <blockquote>
+        <p>Site</p>
+        <footer>
+          <%= link_to @institution.institution_profile.site %>
+       </footer>
+      </blockquote>
+    </div>
+  <% end %>
+  
+  <% unless @institution.institution_profile.email.empty? %> 
+    <div class="col-lg-4">
+      <blockquote>
+        <p>E-mail</p>
+        <footer><%= @institution.institution_profile.email %></footer>
+      </blockquote>
+    </div>
+  <% end %>
+
+  <% unless @institution.institution_profile.phone.empty? %> 
+    <div class="col-lg-4">
+      <blockquote>
+        <p>Tel:</p>
+        <footer><%= @institution.institution_profile.phone %></footer>
+      </blockquote>
+    </div>
+  <% end %>
+
+  <div class="col-lg-4">
+    <blockquote>
+      <p>Redes Socias</p>
+      <footer>
+        <% unless @institution.institution_profile.url_facebook.empty? %> 
+          <%= link_to(verify_http_protocol_in_url(@institution.institution_profile.url_facebook), target: "_blank") do %> 
+            <i class="fa fa-facebook"></i>
+          <% end %>
+        <% end %>
+        <% unless @institution.institution_profile.url_twitter.empty? %> 
+          <%= link_to(verify_http_protocol_in_url(@institution.institution_profile.url_twitter), target: "_blank") do %> 
+            <i class="fa fa-twitter"></i>
+          <% end %>
+        <% end %>
+        <% unless @institution.institution_profile.url_youtube.empty? %> 
+          <%= link_to(verify_http_protocol_in_url(@institution.institution_profile.url_youtube), target: "_blank") do %> 
+            <i class="fa fa-youtube"></i>
+          <% end %>
+        <% end %>
+        <% unless @institution.institution_profile.url_instagram.empty? %> 
+          <%= link_to(verify_http_protocol_in_url(@institution.institution_profile.url_instagram), target: "_blank") do %> 
+            <i class="fa fa-instagram"></i>
+          <% end %>
+        <% end %>
+        <% unless @institution.institution_profile.url_google_plus.empty? %> 
+          <%= link_to(verify_http_protocol_in_url(@institution.institution_profile.url_google_plus), target: "_blank") do %> 
+            <i class="fa fa-google-plus fa-2"></i>
+          <% end %>
+        <% end %>
+      </footer>
+    </blockquote>
+  </div>
+
+  <% unless @institution.institution_profile.address.empty? %> 
+    <div class="col-lg-6">
+      <blockquote>
+        <p>Endereço</p>
+        <footer><%= @institution.institution_profile.address %></footer>
+      </blockquote>
+    </div>
+  <% end %>
+
+</div>
