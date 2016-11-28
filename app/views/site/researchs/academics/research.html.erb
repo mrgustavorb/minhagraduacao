@@ -39,7 +39,7 @@
               <select id="state_id" class="form-control" name="academic[user_profile][state_id]">
                 <option value="">Por favor selecione o seu estado.</option>
                 <%- @states.each do |state| -%>
-                  <option value="<%= state.id %>" <%= (params[:academic] && params[:academic][:user_profile][:state_id].to_i == state.id) ? 'selected="selected"' : '' %>><%= state.name %></option>
+                  <option value="<%= state.id %>" <%= (params[:academic] && params[:academic][:user_profile][:state_id].to_i == state.id) ? 'selected="selected"' : '' %>><%= state.sigla %></option>
                 <%- end -%>
               </select>
             </div>

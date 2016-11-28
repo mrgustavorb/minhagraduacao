@@ -56,32 +56,32 @@
 
   <% if (signed_in? && current_user.answered) %>
 
-    <%  
+    <%#  
       starting_salary     = @evaluations_avarege[:starting_salary].to_i > 0 ? (@evaluations_avarege[:starting_salary]/@evaluations_avarege[:total_professional]).to_i : 0
       professional_salary = @evaluations_avarege[:professional_salary].to_i > 0 ? (@evaluations_avarege[:professional_salary]/@evaluations_avarege[:total_professional]).to_i : 0
       starting_salary     = what_salary?(starting_salary)
       professional_salary = what_salary?(professional_salary, true)
     %> 
 
-    <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12">
-      <% if (signed_in? && current_user.answered && evaluation.user.user_profile.scholarity == 3) %>
-          <div class="row">
+    <!-- <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12"> -->
+      <%# if (signed_in? && current_user.answered && evaluation.user.user_profile.scholarity == 3) %>
+          <!-- <div class="row">
             <div class="col-lg-7 col-md-11 col-sm-6 col-xs-6"> Salário Inicial:</div>
-            <div class="col-xs-11 hidden-xs"><strong><%= starting_salary %></strong></div>
-            <div class="col-xs-11 visible-xs"><strong><%= starting_salary %></strong></div>
+            <div class="col-xs-11 hidden-xs"><strong><%#= starting_salary %></strong></div>
+            <div class="col-xs-11 visible-xs"><strong><%#= starting_salary %></strong></div>
           </div>
 
           <div class="col-lg-7 col-md-11 col-sm-6 col-xs-6"> Salário Mercado:</div>
-            <div class="col-xs-11 hidden-xs"><strong><%= professional_salary %></strong></div>
-            <div class="col-xs-11 visible-xs"><strong><%= professional_salary %></strong>   
+            <div class="col-xs-11 hidden-xs"><strong><%#= professional_salary %></strong></div>
+            <div class="col-xs-11 visible-xs"><strong><%#= professional_salary %></strong>   
           </div>
+ -->
+      <%# end %>
 
-      <% end %>
-
-      <% else %>
-        <div class="col-lg-4 col-md-3 col-sm-6 text-center how-much">
+      <%# else %>
+        <!-- <div class="col-lg-4 col-md-3 col-sm-6 text-center how-much">
           <div style="margin: 34px;"></div>
           <a class="btn btn-primary btn-large-purple btn-lg" href="/users/sign_in" role="button">Quanto Ganha?</a>
-        </div>   
-      <% end %>
+        </div>   --> 
+  <% end %>
 </div>   

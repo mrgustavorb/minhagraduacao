@@ -17,15 +17,15 @@ ActiveRecord::Schema.define(version: 20141007162728) do
   enable_extension "plpgsql"
 
   create_table "academic_degrees", force: true do |t|
-    t.string   "name",       limit: nil
+    t.string   "name"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
   create_table "academic_organizations", force: true do |t|
     t.integer  "co_organizacao_academica"
-    t.string   "name",                     limit: nil
-    t.string   "url_friendly",             limit: nil
+    t.string   "name"
+    t.string   "url_friendly"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -51,10 +51,10 @@ ActiveRecord::Schema.define(version: 20141007162728) do
   add_index "cities_institutions", ["institution_id"], name: "idx_graduations_institutions_1", using: :btree
 
   create_table "customer_profiles", force: true do |t|
-    t.integer  "customer_id",                     null: false
-    t.string   "name",                limit: nil
-    t.string   "avatar_file_name",    limit: nil
-    t.string   "avatar_content_type", limit: nil
+    t.integer  "customer_id",         null: false
+    t.string   "name"
+    t.string   "avatar_file_name"
+    t.string   "avatar_content_type"
     t.integer  "avatar_file_size"
     t.datetime "avatar_updated_at"
     t.datetime "created_at"
@@ -66,20 +66,20 @@ ActiveRecord::Schema.define(version: 20141007162728) do
 
   create_table "customers", force: true do |t|
     t.string   "role",                   limit: 100
-    t.string   "email",                  limit: nil, default: "", null: false
-    t.string   "encrypted_password",     limit: nil, default: "", null: false
-    t.string   "reset_password_token",   limit: nil
+    t.string   "email",                              default: "", null: false
+    t.string   "encrypted_password",                 default: "", null: false
+    t.string   "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
     t.integer  "sign_in_count",                      default: 0,  null: false
     t.datetime "current_sign_in_at"
     t.datetime "last_sign_in_at"
-    t.string   "current_sign_in_ip",     limit: nil
-    t.string   "last_sign_in_ip",        limit: nil
-    t.string   "confirmation_token",     limit: nil
+    t.string   "current_sign_in_ip"
+    t.string   "last_sign_in_ip"
+    t.string   "confirmation_token"
     t.datetime "confirmed_at"
     t.datetime "confirmation_sent_at"
-    t.string   "unconfirmed_email",      limit: nil
+    t.string   "unconfirmed_email"
     t.boolean  "status"
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -100,7 +100,7 @@ ActiveRecord::Schema.define(version: 20141007162728) do
 
   create_table "employee_profiles", force: true do |t|
     t.integer  "employee_id"
-    t.string   "name",        limit: nil
+    t.string   "name"
     t.text     "bios"
     t.text     "picture"
     t.datetime "created_at"
@@ -110,16 +110,16 @@ ActiveRecord::Schema.define(version: 20141007162728) do
   add_index "employee_profiles", ["employee_id"], name: "idx_employee_profiles", using: :btree
 
   create_table "employees", force: true do |t|
-    t.string   "email",                  limit: nil, default: "", null: false
-    t.string   "encrypted_password",     limit: nil, default: "", null: false
-    t.string   "reset_password_token",   limit: nil
+    t.string   "email",                  default: "", null: false
+    t.string   "encrypted_password",     default: "", null: false
+    t.string   "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
-    t.integer  "sign_in_count",                      default: 0,  null: false
+    t.integer  "sign_in_count",          default: 0,  null: false
     t.datetime "current_sign_in_at"
     t.datetime "last_sign_in_at"
-    t.string   "current_sign_in_ip",     limit: nil
-    t.string   "last_sign_in_ip",        limit: nil
+    t.string   "current_sign_in_ip"
+    t.string   "last_sign_in_ip"
   end
 
   create_table "evaluation_graduations", force: true do |t|
@@ -208,17 +208,17 @@ ActiveRecord::Schema.define(version: 20141007162728) do
   add_index "favorite_institutions", ["user_id"], name: "index_user_profiles_on_user_id_1", using: :btree
 
   create_table "graduation_groups", force: true do |t|
-    t.string   "name",                 limit: nil
-    t.string   "name_noaccent",        limit: nil
-    t.string   "url_friendly",         limit: nil
+    t.string   "name"
+    t.string   "name_noaccent"
+    t.string   "url_friendly"
     t.boolean  "active"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.decimal  "views",                            precision: 20, scale: 0
+    t.decimal  "views",                precision: 20, scale: 0
     t.text     "json_data"
     t.text     "description"
-    t.string   "source",               limit: nil
-    t.integer  "institutions_numbers",                                      default: 0
+    t.string   "source"
+    t.integer  "institutions_numbers",                          default: 0
   end
 
   add_index "graduation_groups", ["name_noaccent"], name: "idx_graduation_groups_name_noaccent", using: :btree
@@ -230,7 +230,7 @@ ActiveRecord::Schema.define(version: 20141007162728) do
     t.string  "period",                    limit: 100
     t.text    "hours"
     t.string  "monthly_payment",           limit: 100
-    t.string  "video_link",                limit: nil
+    t.string  "video_link"
   end
 
   add_index "graduation_profiles", ["graduation_institution_id"], name: "idx_graduation_profiles", using: :btree
@@ -266,8 +266,8 @@ ActiveRecord::Schema.define(version: 20141007162728) do
     t.integer  "institution_id"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "photo_file_name",    limit: nil
-    t.string   "photo_content_type", limit: nil
+    t.string   "photo_file_name"
+    t.string   "photo_content_type"
     t.integer  "photo_file_size"
     t.datetime "photo_updated_at"
   end
@@ -277,24 +277,24 @@ ActiveRecord::Schema.define(version: 20141007162728) do
   create_table "institution_profiles", force: true do |t|
     t.integer  "institution_id"
     t.text     "description"
-    t.integer  "igc",                                    default: 0
-    t.boolean  "accepts_fies",                           default: false
-    t.boolean  "accepts_prouni",                         default: false
-    t.integer  "total_professors_phd",                   default: 0
-    t.integer  "total_professors_master",                default: 0
-    t.integer  "total_professors_graduatos",             default: 0
-    t.string   "site",                       limit: nil
-    t.string   "video_link",                 limit: nil
+    t.integer  "igc",                                   default: 0
+    t.boolean  "accepts_fies",                          default: false
+    t.boolean  "accepts_prouni",                        default: false
+    t.integer  "total_professors_phd",                  default: 0
+    t.integer  "total_professors_master",               default: 0
+    t.integer  "total_professors_graduatos",            default: 0
+    t.string   "site"
+    t.string   "video_link"
     t.text     "email"
-    t.string   "phone",                      limit: nil
-    t.string   "address",                    limit: nil
-    t.string   "url_facebook",               limit: nil
-    t.string   "url_twitter",                limit: nil
-    t.string   "url_youtube",                limit: nil
-    t.string   "url_instagram",              limit: nil
-    t.string   "url_google_plus",            limit: nil
-    t.string   "avatar_file_name",           limit: nil
-    t.string   "avatar_content_type",        limit: nil
+    t.string   "phone"
+    t.string   "address"
+    t.string   "url_facebook"
+    t.string   "url_twitter"
+    t.string   "url_youtube"
+    t.string   "url_instagram"
+    t.string   "url_google_plus"
+    t.string   "avatar_file_name"
+    t.string   "avatar_content_type"
     t.integer  "avatar_file_size"
     t.datetime "avatar_updated_at"
     t.datetime "created_at"
@@ -305,7 +305,7 @@ ActiveRecord::Schema.define(version: 20141007162728) do
   add_index "institution_profiles", ["institution_id"], name: "idx_institution_profiles", using: :btree
 
   create_table "institutions", force: true do |t|
-    t.string   "name",                     limit: nil
+    t.string   "name"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "co_ies"
@@ -327,7 +327,7 @@ ActiveRecord::Schema.define(version: 20141007162728) do
   add_index "institutions", ["uf_id"], name: "idx_institutions", using: :btree
 
   create_table "method_teachings", force: true do |t|
-    t.string   "name",       limit: nil
+    t.string   "name"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -335,22 +335,22 @@ ActiveRecord::Schema.define(version: 20141007162728) do
   create_table "pg_search_documents", force: true do |t|
     t.text     "content"
     t.integer  "searchable_id"
-    t.string   "searchable_type", limit: nil
+    t.string   "searchable_type"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
   create_table "posts", force: true do |t|
-    t.string   "title",        limit: nil
+    t.string   "title"
     t.text     "content"
-    t.string   "url_friendly", limit: nil
+    t.string   "url_friendly"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
   create_table "regions", force: true do |t|
     t.string   "name",       limit: 100
-    t.string   "region",     limit: nil
+    t.string   "region"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -390,11 +390,11 @@ ActiveRecord::Schema.define(version: 20141007162728) do
 
   create_table "user_profiles", force: true do |t|
     t.integer  "user_id"
-    t.string   "name",           limit: nil
+    t.string   "name"
     t.date     "birthday"
     t.text     "picture"
     t.string   "gender",         limit: 10
-    t.string   "fb_uid",         limit: nil
+    t.string   "fb_uid"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "school_id"
@@ -405,38 +405,38 @@ ActiveRecord::Schema.define(version: 20141007162728) do
     t.integer  "semester"
     t.integer  "institution_id"
     t.integer  "graduation_id"
-    t.string   "city",           limit: nil
+    t.string   "city"
     t.boolean  "student_loan"
   end
 
   add_index "user_profiles", ["user_id"], name: "index_user_profiles_on_user_id", using: :btree
 
   create_table "users", force: true do |t|
-    t.string   "email",                  limit: nil, default: "",    null: false
-    t.string   "encrypted_password",     limit: nil, default: "",    null: false
-    t.string   "reset_password_token",   limit: nil
+    t.string   "email",                             default: "",    null: false
+    t.string   "encrypted_password",                default: "",    null: false
+    t.string   "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
     t.datetime "confirmed_at"
-    t.integer  "sign_in_count",                      default: 0,     null: false
+    t.integer  "sign_in_count",                     default: 0,     null: false
     t.datetime "current_sign_in_at"
     t.datetime "last_sign_in_at"
-    t.string   "current_sign_in_ip",     limit: nil
-    t.string   "last_sign_in_ip",        limit: nil
-    t.string   "provider",               limit: nil
-    t.string   "confirmation_token",     limit: nil
+    t.string   "current_sign_in_ip"
+    t.string   "last_sign_in_ip"
+    t.string   "provider"
+    t.string   "confirmation_token"
     t.time     "confirmation_sent_at"
-    t.string   "unconfirmed_email",      limit: nil
-    t.integer  "failed_attempts",                    default: 0,     null: false
-    t.string   "unlock_token",           limit: nil
+    t.string   "unconfirmed_email"
+    t.integer  "failed_attempts",                   default: 0,     null: false
+    t.string   "unlock_token"
     t.datetime "locked_at"
     t.datetime "password_expires_at"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "registration_ip",        limit: 15
     t.boolean  "agree_use_term"
-    t.boolean  "answered",                           default: false
-    t.boolean  "fake",                               default: false
+    t.boolean  "answered",                          default: false
+    t.boolean  "fake",                              default: false
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
@@ -447,10 +447,10 @@ ActiveRecord::Schema.define(version: 20141007162728) do
     t.integer  "opinion_type_id"
     t.integer  "institution_id"
     t.integer  "graduation_id"
-    t.string   "uuid",            limit: nil
-    t.string   "short_code",      limit: nil
-    t.integer  "views",                       default: 0
-    t.string   "youtube_code",    limit: nil
+    t.string   "uuid"
+    t.string   "short_code"
+    t.integer  "views",           default: 0
+    t.string   "youtube_code"
     t.integer  "youtube_views"
     t.boolean  "deleted"
     t.datetime "created_at"

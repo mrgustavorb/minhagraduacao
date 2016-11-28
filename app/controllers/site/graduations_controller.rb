@@ -80,8 +80,9 @@ class Site::GraduationsController < Site::ApplicationController
     end
 
     def set_graduation_view
-      @graduation_group.views += 1
-      @graduation_group.save!
+      @graduation_group.update(views: @graduation_group.views + 1)
+      # @graduation_group.views += 1
+      # @graduation_group.save!
     end
     
 end

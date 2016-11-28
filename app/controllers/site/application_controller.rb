@@ -42,6 +42,7 @@ class Site::ApplicationController < ActionController::Base
 
       if resource_name == :user
         page = which_user_research? 
+        # byebug
       end 
       if resource_name == :employee
         page = root_employee_path 
@@ -50,7 +51,7 @@ class Site::ApplicationController < ActionController::Base
         page = root_customer_path 
       end 
 
-      page
+      return page
     end
 
     def user_answered_research?
@@ -63,6 +64,7 @@ class Site::ApplicationController < ActionController::Base
 
     def which_user_research?
       page = root_path
+
       if signed_in? && !current_user.answered
         page = case current_user.user_profile.scholarity
           when 0

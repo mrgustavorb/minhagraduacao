@@ -6,7 +6,7 @@
     <li class="mgmenu_button">Menu</li> 
 
     <!-- Navigation links -->
-    <li class="font-navbar"><%= link_to 'graduações', graduations_path %></li>
+    <li class="font-navbar"><%= link_to 'Graduações', graduations_path %></li>
       <%- if user_signed_in? -%>
         <li><a href="#"><%= current_user.email %> <i class="fa fa-angle-down"></i></a>
         <!-- Dropdown menu -->
@@ -21,8 +21,8 @@
         </div>
         </li>
       <%- else -%>
-        <li><%= link_to 'entrar', new_user_session_path  %></li>
-        <li class=""><button class="btn btn-purple" style="top: 8px;"><%= link_to 'Sou Universidade' %></button></li>
+        <li><%= link_to 'Entrar', new_user_session_path  %></li>
+        <!-- <li class=""><button class="btn btn-purple" style="top: 8px;"><%#= link_to 'Sou Universidade' %></button></li> -->
       <% end %>
     </ul>
  </div>
