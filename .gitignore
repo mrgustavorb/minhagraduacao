@@ -31,7 +31,7 @@ Thumbs.db
 #/db/migrate
 
 #Database.yml
-/config/database.yml
+/config/database.yml~
 .env
 
 *.rbc
