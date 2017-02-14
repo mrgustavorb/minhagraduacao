@@ -11,7 +11,7 @@ class Contact < MailForm::Base
   def headers
     {
       subject: "Formulário de Contato",
-      to:      "carlosalan86@gmail.com"
+      to:      "no-reply@example.com"
     }
   end
 end

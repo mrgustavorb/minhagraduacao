@@ -1,12 +1,12 @@
 class UserMailer < ActionMailer::Base
   default from: "minhagraduacao@minhagraduacao.com"
- 
+
   def confirmation_instructions(user, token, opts={})
     @token = token
     @user  = user
     mail(to: user.email, subject: "Seja bem vinda(o) ", template_path: 'site/users/mailer', template_name: 'confirmation_instructions')
   end
- 
+
   def reset_password_instructions(user, token, opts={})
     @token = token
     @user  = user
@@ -31,7 +31,7 @@ class UserMailer < ActionMailer::Base
     token = video.graduation.graduation_group.url_friendly
     @url  = "http://minhagraduacao.com/#{token}?v=#{video.id}"
     mail(to: @user.email, subject: "Minha Graduação - Agradecemos sua colaboração",
-    bcc: ['carlosalan86@gmail.com'])
+    bcc: ['example@gmail.com'])
   end
 
   def universitary_record_email(user, video)
@@ -39,14 +39,14 @@ class UserMailer < ActionMailer::Base
     token = video.graduation.graduation_group.url_friendly
     @url  = "http://minhagraduacao.com/#{token}?v=#{video.id}"
     mail(to: @user.email, subject: "Minha Graduação - Agradecemos sua colaboração",
-    bcc: ['carlosalan86@gmail.com'])
+    bcc: ['example@gmail.com'])
   end
 
   def contact_email(name, email, message)
     @name = name
     @email = email
     @message = message
-    mail(to: 'carlosalan86@gmail.com', subject: 'Minha Graduação - Formulário de Contato')
+    mail(to: 'example@gmail.com', subject: 'Minha Graduação - Formulário de Contato')
   end
 
   def sign_up_facebook(user)

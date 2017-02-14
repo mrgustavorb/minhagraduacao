@@ -1,8 +1,8 @@
-app_name = "ninjachoice"
+app_name = "minhagraduacao"
 app_path = "/var/www/rails/#{app_name}"
 
 set :application, app_name
-set :repo_url, "git@github.com:carlosalan/#{app_name}.git"
+set :repo_url, "git@github.com:gustavosantiago/#{app_name}.git"
 
 set :deploy_to, app_path
 set :keep_releases, 5
